@@ -128,10 +128,19 @@
         .nav-brand .brand-logo {
             height: 48px;
             width: auto;
+            object-fit: contain;
             border-radius: 4px;
             background: var(--white);
             padding: 4px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: block;
+        }
+        .nav-brand .brand-icon-fallback {
+            font-size: 2rem;
+            color: var(--gold);
+            background: var(--white);
+            border-radius: 8px;
+            padding: 6px;
         }
         .nav-brand span {
             font-size: 0.75rem;
@@ -285,7 +294,11 @@
         .hero-content .hero-badges .badge img {
             height: 24px;
             width: auto;
+            object-fit: contain;
             vertical-align: middle;
+        }
+        .hero-content .hero-badges .badge .badge-icon-fallback {
+            font-size: 1.2rem;
         }
         .hero-content h1 {
             font-size: 3.2rem;
@@ -389,10 +402,12 @@
             font-weight: 500;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             animation: floatBadge 6s ease-in-out infinite;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            max-width: 140px;
+            min-width: 60px;
+            min-height: 60px;
         }
         .hero-visual .floating-badge img {
             max-width: 100%;
@@ -400,6 +415,10 @@
             width: auto;
             height: auto;
             object-fit: contain;
+        }
+        .hero-visual .floating-badge .float-icon-fallback {
+            font-size: 2rem;
+            color: var(--gold);
         }
         .hero-visual .floating-badge:nth-child(2) {
             top: -10px;
@@ -781,7 +800,7 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             border: 1px solid rgba(201, 168, 76, 0.06);
-            text-align: center;
+            text-align: left;
         }
         .content-section .content-card:hover {
             transform: translateY(-6px);
@@ -791,7 +810,7 @@
         .content-section .content-card .card-icon {
             width: 64px;
             height: 64px;
-            margin: 0 auto 16px;
+            margin: 0 0 16px 0;
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -801,15 +820,10 @@
             color: var(--primary-blue);
         }
         .content-section .content-card h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--primary-blue);
-            margin-bottom: 6px;
-        }
-        .content-section .content-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+            margin-bottom: 12px;
         }
         .content-section .content-card .drive-link {
             display: inline-block;
@@ -828,6 +842,99 @@
         }
         .content-section .content-card .drive-link i {
             margin-right: 6px;
+        }
+
+        /* ===== ORG CHART INDENTED STYLE ===== */
+        .org-indent-chart {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 12px 0;
+            padding-left: 24px;
+            border-left: 3px solid var(--gold);
+        }
+        .org-item {
+            position: relative;
+            padding: 10px 0 10px 20px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.10);
+            text-align: left;
+        }
+        .org-item:last-child {
+            border-bottom: none;
+        }
+        .org-item::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--gold);
+        }
+        .org-item:last-child::after {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 50%;
+            width: 3px;
+            height: 50%;
+            background: var(--white); /* Hides the line below the last item */
+        }
+        .org-item:hover {
+            background: rgba(201, 168, 76, 0.05);
+            border-radius: 6px;
+            padding-left: 24px; /* slight movement */
+            transition: all 0.2s ease;
+        }
+        .org-level {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .org-name {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+        }
+        .org-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+        .org-level-1 .org-level {
+            color: var(--gold);
+        }
+        .org-level-1 .org-name {
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+        .org-level-2 .org-level {
+            color: var(--secondary-blue);
+        }
+        .org-level-3 .org-level {
+            color: var(--accent-blue);
+        }
+        .org-level-4 .org-level {
+            color: #6a8a9a;
+        }
+        @media (max-width: 768px) {
+            .org-indent-chart {
+                padding-left: 16px;
+            }
+            .org-item {
+                padding: 8px 0 8px 14px;
+            }
+            .org-item::before {
+                width: 14px;
+            }
+            .org-item:hover {
+                padding-left: 18px;
+            }
         }
 
         /* ===== FOOTER ===== */
@@ -1216,6 +1323,11 @@
             font-size: 0.8rem;
             margin-left: 8px;
         }
+
+        /* ===== FALLBACK IMAGE HANDLING ===== */
+        .img-fallback-hide {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -1223,7 +1335,10 @@
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-brand">
-            <img src="logo-sekolah.png" alt="SMK Seri Mutiara" class="brand-logo">
+            <!-- Logo Sekolah di Navbar (Dengan Fallback JavaScript) -->
+            <img src="logo-sekolah.png" alt="SMK Seri Mutiara" class="brand-logo" id="navLogo" onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='block';">
+            <i class="fas fa-school brand-icon-fallback" id="navLogoFallback" style="display:none;"></i>
+
             <div>
                 MUTIARA e-KURIKULUM
                 <span class="brand-sub">SMK Seri Mutiara · KL 2026</span>
@@ -1263,11 +1378,13 @@
                 <div class="hero-content fade-in">
                     <div class="hero-badges">
                         <span class="badge">
-                            <img src="logo-ts25.png" alt="TS25"> 
+                            <img src="logo-ts25.png" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                            <i class="fas fa-medal badge-icon-fallback" style="display:none; color:var(--gold);"></i>
                             TS25
                         </span>
                         <span class="badge">
-                            <img src="logo-sekolah.png" alt="SMK Seri Mutiara"> 
+                            <img src="logo-sekolah.png" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                            <i class="fas fa-school badge-icon-fallback" style="display:none; color:var(--gold);"></i>
                             SMK Seri Mutiara
                         </span>
                         <span class="badge"><i class="fas fa-calendar-check"></i> 2026</span>
@@ -1293,11 +1410,16 @@
                         <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=450&fit=crop&crop=center&auto=format" alt="SMK Seri Mutiara - Bangunan Sekolah" loading="lazy" />
                         <div class="image-overlay"></div>
                     </div>
+                    
+                    <!-- Floating Badge TS25 -->
                     <div class="floating-badge" style="top:-10px;right:-10px;">
-                        <img src="logo-ts25.png" alt="TS25">
+                        <img src="logo-ts25.png" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <i class="fas fa-medal float-icon-fallback" style="display:none;"></i>
                     </div>
+                    <!-- Floating Badge Sekolah -->
                     <div class="floating-badge" style="bottom:-10px;left:-10px;">
-                         <img src="logo-sekolah.png" alt="SMK Seri Mutiara">
+                        <img src="logo-sekolah.png" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <i class="fas fa-school float-icon-fallback" style="display:none;"></i>
                     </div>
                 </div>
             </div>
@@ -1450,118 +1572,162 @@
 
     <!-- ===== CONTENT SECTIONS ===== -->
 
-    <!-- JAWATANKUASA -->
+    <!-- JAWATANKUASA (Section 2.5) - DIREKA BENTUK SEBAGAI CARTA ORGANISASI -->
     <section id="jawatankuasa" class="content-section">
         <div class="page-header">
             <h2>Jawatankuasa <span class="highlight">Kurikulum 2026</span></h2>
-            <p>Senarai 10 Jawatankuasa aktif SMK Seri Mutiara bagi sesi 2026</p>
+            <p>Struktur organisasi 10 Jawatankuasa aktif SMK Seri Mutiara bagi sesi 2026</p>
         </div>
         <div class="content-grid">
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-sitemap"></i></div>
+            
+            <!-- 2.5.1 JK Kurikulum Sekolah -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-sitemap"></i></div>
                 <h4>JK Kurikulum Sekolah</h4>
-                <p><strong>Pengerusi:</strong> Rahimah binti Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani a/p Selvarajah, Silawati bt Yacob<br>
-                <strong>Setiausaha:</strong> Siti Fairuz bt Suhaimi<br>
-                <strong>AJK:</strong> GKMP (Faridah, Hanizah, Teh Lay Choo, Norazura) &amp; semua Ketua Panitia</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah binti Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan Pengerusi</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib Pengerusi</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong Setiausaha</span><span class="org-name">Nur Hidayah bt Ramli</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Ahli Jawatankuasa (AJK)</span><span class="org-name">GKMP (Faridah, Hanizah, Teh Lay Choo, Norazura) &amp; Semua Ketua Panitia</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen JK</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-clipboard-list"></i></div>
+
+            <!-- 2.5.2 JK PBS -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
                 <h4>JK Pentaksiran Berasaskan Sekolah (PBS)</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Setiausaha:</strong> Siti Norhidayah bt Che Musa<br>
-                <strong>SU PAJSK:</strong> Suhanim bt Ismail<br>
-                <strong>SU Psikometrik:</strong> Rashidah bt Ramlan<br>
-                <strong>KPMP SPM:</strong> Salwani (BM), Harmate (BI), Lau Siew Huong (BC), Asfazihah (PI), Amira Farzana (PM), Ag Fauzi (PSV), Chan Suet Mey (PA), Norhayati (Perniagaan), Diana Farhana (Sains)</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha PBS/PBD</span><span class="org-name">Siti Norhidayah bt Che Musa</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong SU PBS/PBD</span><span class="org-name">Nurul Syazwani bt Salim</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">SU PAJSK</span><span class="org-name">Suhanim bt Ismail</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">SU Psikometrik</span><span class="org-name">Rashidah bt Ramlan</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK Penjaminan Kualiti</span><span class="org-name">Faridah (Penyelarasan), Hanizah (Pengesanan), Teh Lay Choo (Pementoran), Norazura (Pemantauan)</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Ketua Pentaksir Sekolah (KPMP)</span><span class="org-name">Salwani (BM), Harmate (BI), Lau (BC), Asfazihah (PI), Amira Farzana (PM), Ag Fauzi (PSV), Chan Suet Mey (PA), Norhayati (Perniagaan), Diana (Sains)</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PBS</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-language"></i></div>
+
+            <!-- 2.5.3 JK MBMMBI -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-language"></i></div>
                 <h4>JK MBMMBI</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras:</strong> Faridah bt Othman (GKMP Bahasa)<br>
-                <strong>Setiausaha:</strong> Noor Azini bt Ibrahim<br>
-                <strong>AJK:</strong> Salwani, Harmate, serta semua guru BM &amp; BI</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Faridah bt Othman (GKMP Bahasa)</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Noor Azini bt Ibrahim</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Salwani bt Mohamed, Harmate bt Abdullah, serta semua guru BM &amp; BI</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen MBMMBI</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-microchip"></i></div>
+
+            <!-- 2.5.4 JK STEM -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-microchip"></i></div>
                 <h4>JK STEM</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras 1:</strong> Teh Lay Choo<br>
-                <strong>Penyelaras 2:</strong> Norazura bt Munajat<br>
-                <strong>Setiausaha:</strong> Yap Boon Yean<br>
-                <strong>AJK:</strong> Semua KP Sains &amp; Matematik, KP RBT</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 1</span><span class="org-name">Teh Lay Choo</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 2</span><span class="org-name">Norazura bt Munajat</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Yap Boon Yean</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Semua KP Sains &amp; Matematik &amp; KP RBT</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen STEM</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-flask"></i></div>
+
+            <!-- 2.5.5 JK PESBP -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-flask"></i></div>
                 <h4>JK PESBP (Eksperimen Sains)</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras:</strong> Teh Lay Choo<br>
-                <strong>Setiausaha:</strong> Diana Farhana bt Mohd Radzi<br>
-                <strong>AJK:</strong> Semua guru Sains</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Teh Lay Choo</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Diana Farhana bt Mohd Radzi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Semua guru Sains</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PESBP</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-book-reader"></i></div>
+
+            <!-- 2.5.6 JK PSS -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-book-reader"></i></div>
                 <h4>JK Pusat Sumber Sekolah (PSS)</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras/Setiausaha:</strong> Nur Suhaila bt Lani<br>
-                <strong>AJK:</strong> Semua GKMP, semua KP, Mohd Nor Azam, Siti Norhidayah</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras / Setiausaha</span><span class="org-name">Nur Suhaila bt Lani</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK Induk</span><span class="org-name">Semua GKMP, semua KP, Mohd Nor Azam, Siti Norhidayah</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PSS</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-book"></i></div>
+
+            <!-- 2.5.7 JK NILAM -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-book"></i></div>
                 <h4>JK Program NILAM</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras:</strong> Nurul Farahlina bt Roslan<br>
-                <strong>Penolong:</strong> Fathiah Aimi bt Fadzil<br>
-                <strong>Penyelaras Tingkatan:</strong> Fathiah (Peralihan/1), Syazwana (2), Nurul Farahlina (3), Nurul Faizin (4), Noor Azini (5)</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Nurul Farahlina bt Roslan</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong</span><span class="org-name">Fathiah Aimi bt Fadzil</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Penyelaras Tingkatan</span><span class="org-name">Fathiah (Per/1), Syazwana (2), Nurul Farahlina (3), Nurul Faizin (4), Noor Azini (5)</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen NILAM</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-laptop"></i></div>
+
+            <!-- 2.5.8 JK ICT -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-laptop"></i></div>
                 <h4>JK ICT</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Naib:</strong> Bavani, Silawati<br>
-                <strong>Penyelaras:</strong> Nur Surayya bt Mohd Zulkifli<br>
-                <strong>Setiausaha:</strong> Siti Fairuz bt Suhaimi<br>
-                <strong>AJK:</strong> Raihan Izzati, Suhanim</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Nur Surayya bt Mohd Zulkifli</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong</span><span class="org-name">Raihan Izzati bt Rosanizan</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Suhanim bt Ismail, Pengurusan Google Site, SSQS, DCS, e-RPH</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen ICT</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-clock"></i></div>
+
+            <!-- 2.5.9 JK Jadual Waktu -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-clock"></i></div>
                 <h4>JK Jadual Waktu</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>Penyelaras 1:</strong> Hanizah bt Hamzah<br>
-                <strong>Penyelaras 2:</strong> Teh Lay Choo<br>
-                <strong>Setiausaha:</strong> Nur Hidayah bt Saudi<br>
-                <strong>AJK:</strong> Siti Fairuz bt Suhaimi</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 1</span><span class="org-name">Hanizah bt Hamzah</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 2</span><span class="org-name">Teh Lay Choo</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt Saudi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen Jadual</a>
             </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin: 0 0 16px 0;"><i class="fas fa-user-clock"></i></div>
+
+            <!-- 2.5.10 JK Relief -->
+            <div class="content-card">
+                <div class="card-icon"><i class="fas fa-user-clock"></i></div>
                 <h4>JK Relief Sekolah</h4>
-                <p><strong>Pengerusi:</strong> Rahimah bt Yusop<br>
-                <strong>Timbalan:</strong> Noorliza bt Abd Khair<br>
-                <strong>AJK:</strong> Faridah, Hanizah, Teh Lay Choo, Norazura, Sayida Syairah, Nurhidayah, Fathiah Aimi, Nabilah, Nur Farah Su'Aidah, Athirah</p>
+                <div class="org-indent-chart">
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Ahli Jawatankuasa</span><span class="org-name">Faridah, Hanizah, Teh Lay Choo, Norazura, Sayida Syairah, Nurhidayah, Fathiah Aimi, Nabilah, Nur Farah Su'Aidah, Athirah</span></div>
+                </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen Relief</a>
             </div>
         </div>
