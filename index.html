@@ -74,6 +74,152 @@
             background: var(--primary-blue-light);
         }
 
+        /* ===== ADMIN PANEL STYLES ===== */
+        .admin-login-btn {
+            position: fixed;
+            bottom: 90px; /* Above the back-to-top button */
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: rgba(15, 43, 79, 0.8);
+            color: var(--white);
+            border: 2px solid var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-login-btn:hover {
+            background: var(--gold);
+            color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+        .admin-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-overlay.active { display: flex; }
+        .admin-modal {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .admin-modal h3 { color: var(--primary-blue); margin-bottom: 20px; font-size: 1.5rem; }
+        .admin-modal input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+            transition: var(--transition);
+        }
+        .admin-modal input:focus { border-color: var(--gold); }
+        .admin-modal .btn-login {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: var(--gold);
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .admin-modal .btn-login:hover { background: #b8962e; transform: translateY(-2px); }
+        .admin-modal .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .admin-modal .close-modal:hover { color: var(--primary-blue); }
+        .admin-error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: -12px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .admin-panel {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: var(--gold);
+            color: var(--primary-blue);
+            padding: 12px 20px;
+            z-index: 1500;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        .admin-panel.active { display: flex; }
+        .admin-panel .brand { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .admin-panel .controls { display: flex; gap: 10px; flex-wrap: wrap; }
+        .admin-panel button {
+            padding: 8px 18px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 30px;
+            background: var(--white);
+            color: var(--primary-blue);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .admin-panel button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .admin-panel button.btn-save {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        .admin-panel button.btn-save:hover { background: #0a1f3a; }
+        .admin-panel button.btn-exit { border-color: #e74c3c; color: #e74c3c; }
+        .admin-panel button.btn-exit:hover { background: #e74c3c; color: white; }
+
+        /* Editable Zones Highlight */
+        .editable-zone {
+            transition: all 0.2s ease;
+        }
+        body.is-editing .editable-zone {
+            outline: 2px dashed var(--accent-blue);
+            outline-offset: 2px;
+            background: rgba(74, 154, 212, 0.05);
+            border-radius: 4px;
+            padding: 2px;
+            cursor: text;
+        }
+        body.is-editing .editable-zone:focus {
+            outline: 2px solid var(--gold);
+            background: rgba(201, 168, 76, 0.1);
+            border-radius: 4px;
+        }
+
         /* ===== GLASSMORPHISM UTILITY ===== */
         .glass {
             background: var(--glass-bg);
@@ -1332,10 +1478,31 @@
 </head>
 <body>
 
+    <!-- ===== ADMIN PANEL HTML ===== -->
+    <button class="admin-login-btn" id="adminLoginBtn" title="Panel Admin"><i class="fas fa-lock"></i></button>
+    
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-modal">
+            <i class="fas fa-times close-modal" id="closeModalBtn"></i>
+            <h3><i class="fas fa-shield-alt" style="color:var(--gold);"></i> Login Admin</h3>
+            <input type="password" id="adminPasswordInput" placeholder="Masukkan Kata Laluan" onkeydown="if(event.key==='Enter') loginAdmin()">
+            <div class="admin-error" id="loginError">Kata laluan salah. Sila cuba lagi.</div>
+            <button class="btn-login" onclick="loginAdmin()">Login</button>
+        </div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+        <div class="brand"><i class="fas fa-user-shield" style="color:var(--primary-blue);"></i> Mod Pentadbir</div>
+        <div class="controls">
+            <button id="toggleEditBtn" onclick="toggleEditMode()"><i class="fas fa-pen"></i> Hidupkan Mod Edit</button>
+            <button class="btn-save" onclick="saveChanges()"><i class="fas fa-save"></i> Simpan Perubahan</button>
+            <button class="btn-exit" onclick="exitAdmin()"><i class="fas fa-sign-out-alt"></i> Keluar Admin</button>
+        </div>
+    </div>
+
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-brand">
-            <!-- Logo Sekolah di Navbar (Dengan Fallback JavaScript) -->
             <img src="logo-sekolah.png" alt="SMK Seri Mutiara" class="brand-logo" id="navLogo" onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='block';">
             <i class="fas fa-school brand-icon-fallback" id="navLogoFallback" style="display:none;"></i>
 
@@ -1484,21 +1651,21 @@
                 </div>
                 <div class="grid">
                     <div class="announce-card">
-                        <div class="date"><i class="far fa-calendar"></i> 20 Julai 2026</div>
-                        <h4>Pentaksiran UTQH SPM 2026 Bermula</h4>
-                        <p>Pentaksiran UTQH SPM 2026 akan berlangsung mulai 20 Julai hingga 3 Ogos 2026. Sila rujuk takwim untuk maklumat lanjut.</p>
+                        <div class="date editable-zone" id="announce-date-1"><i class="far fa-calendar"></i> 20 Julai 2026</div>
+                        <h4 class="editable-zone" id="announce-title-1">Pentaksiran UTQH SPM 2026 Bermula</h4>
+                        <p class="editable-zone" id="announce-desc-1">Pentaksiran UTQH SPM 2026 akan berlangsung mulai 20 Julai hingga 3 Ogos 2026. Sila rujuk takwim untuk maklumat lanjut.</p>
                         <span class="tag">Peperiksaan</span>
                     </div>
                     <div class="announce-card">
-                        <div class="date"><i class="far fa-calendar"></i> 11 April 2026</div>
-                        <h4>Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025</h4>
-                        <p>Majlis Anugerah Kecemerlangan Akademik bagi sesi 2025 akan diadakan pada 11 April 2026.</p>
+                        <div class="date editable-zone" id="announce-date-2"><i class="far fa-calendar"></i> 11 April 2026</div>
+                        <h4 class="editable-zone" id="announce-title-2">Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025</h4>
+                        <p class="editable-zone" id="announce-desc-2">Majlis Anugerah Kecemerlangan Akademik bagi sesi 2025 akan diadakan pada 11 April 2026.</p>
                         <span class="tag">Akademik</span>
                     </div>
                     <div class="announce-card">
-                        <div class="date"><i class="far fa-calendar"></i> 30 Mac 2026</div>
-                        <h4>Bulan Akademik & Minggu Bidang Bahasa</h4>
-                        <p>Bulan Akademik 2026 akan bermula 30 Mac hingga 3 April (Minggu Bahasa), diikuti Minggu Sains & Matematik serta Teknik & Vokasional pada 6-10 April.</p>
+                        <div class="date editable-zone" id="announce-date-3"><i class="far fa-calendar"></i> 30 Mac 2026</div>
+                        <h4 class="editable-zone" id="announce-title-3">Bulan Akademik & Minggu Bidang Bahasa</h4>
+                        <p class="editable-zone" id="announce-desc-3">Bulan Akademik 2026 akan bermula 30 Mac hingga 3 April (Minggu Bahasa), diikuti Minggu Sains & Matematik serta Teknik & Vokasional pada 6-10 April.</p>
                         <span class="tag">Program</span>
                     </div>
                 </div>
@@ -1747,9 +1914,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Salwani bt. Mohamed</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Noor Azini bt Ibrahim</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Raihan bt Musa</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Bavani A/P Selvarajah, Faridah bt. Othman, Nurul Farahlina bt. Roslan, Fatin Norfatirah bt. Yusof, Syazwana bt. Nor Izani, Tey Wei Peng, Nurul Faizin bt. Yusuf, Muhammad Solehudin b. Tukiman, Noor Azini bt. Ibrahim</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bm-guru">Bavani A/P Selvarajah, Faridah bt. Othman, Nurul Farahlina bt. Roslan, Fatin Norfatirah bt. Yusof, Syazwana bt. Nor Izani, Tey Wei Peng, Nurul Faizin bt. Yusuf, Muhammad Solehudin b. Tukiman, Noor Azini bt. Ibrahim</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia BM</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BM</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-globe"></i></div>
@@ -1758,9 +1925,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Harmate bt. Abdullah</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nurul Syazwani bt. Salim</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Syahirah bt. Abdul Aris</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Norhayati bt. Ahmad, Yee Hooi Min, Mohd Rafiuddin b. Ismail, Nursyakila bt. Rusli, Fathiah Aimi Binti Fadzil</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bi-guru">Norhayati bt. Ahmad, Yee Hooi Min, Mohd Rafiuddin b. Ismail, Nursyakila bt. Rusli, Fathiah Aimi Binti Fadzil</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia BI</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BI</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-book"></i></div>
@@ -1768,9 +1935,9 @@
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Lau Siew Huong</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Lim Chee Chen</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Lau Siew Huong, Lim Chee Chen</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bc-guru">Lau Siew Huong, Lim Chee Chen</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia BC</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BC</a>
             </div>
         </div>
     </section>
@@ -1789,9 +1956,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Alias b. Mohamad</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nurul Shazlin bt. Mohd Nazir</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Sayida Syairah bt. Zainudin</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Rahimah bt. Yusop, Teh Lay Choo, Norazura bt. Munajat, Silawati bt. Yacob, Mardhiah bt. Mohd Nadzir, Nabilah bt. Abd. Razak, Siti Fairuz bt. Suhaimi, Muhammad Zikri b. Razali</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="math-guru">Rahimah bt. Yusop, Teh Lay Choo, Norazura bt. Munajat, Silawati bt. Yacob, Mardhiah bt. Mohd Nadzir, Nabilah bt. Abd. Razak, Siti Fairuz bt. Suhaimi, Muhammad Zikri b. Razali</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Matematik</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Matematik</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-plus"></i></div>
@@ -1799,9 +1966,9 @@
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Nur Surayya bt. Mohd Zulkifli</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt. Suhaimi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Teh Lay Choo, Nur Surayya bt. Mohd Zulkifli, Siti Fairuz bt. Suhaimi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="addmath-guru">Teh Lay Choo, Nur Surayya bt. Mohd Zulkifli, Siti Fairuz bt. Suhaimi</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Add Math</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Add Math</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-flask"></i></div>
@@ -1810,36 +1977,36 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Diana Farhana bt. Mohd Radzi</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Mardhiah bt. Mohd Nadzi</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Hafizah bt. Awang Saad</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Ayuni Amalina bt. Mukhtar, Ee Fong Ling, Lau Siaw Ching, Muhammad Syakir b. Yusof, Yap Boon Yean, Raihan Izzati bt. Rosanizan, Nur Surayya bt. Mohd Zulkifli</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="sains-guru">Ayuni Amalina bt. Mukhtar, Ee Fong Ling, Lau Siaw Ching, Muhammad Syakir b. Yusof, Yap Boon Yean, Raihan Izzati bt. Rosanizan, Nur Surayya bt. Mohd Zulkifli</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Sains</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Sains</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-dna"></i></div>
                 <h4>Biologi</h4>
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Yap Boon Yean</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Yap Boon Yean, Raihan Izzati bt. Rosanizan</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bio-guru">Yap Boon Yean, Raihan Izzati bt. Rosanizan</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Biologi</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Biologi</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-atom"></i></div>
                 <h4>Fizik</h4>
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Muhammad Syakir b. Yusof</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Muhammad Syakir b. Yusof, Diana Farhana bt. Mohd Radzi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="fizik-guru">Muhammad Syakir b. Yusof, Diana Farhana bt. Mohd Radzi</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Fizik</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Fizik</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-vial"></i></div>
                 <h4>Kimia</h4>
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Lau Siaw Ching</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Lau Siaw Ching, Hafizah bt. Awang Saad</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="kimia-guru">Lau Siaw Ching, Hafizah bt. Awang Saad</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Kimia</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Kimia</a>
             </div>
         </div>
     </section>
@@ -1858,9 +2025,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Rohana bt. Ya'kob</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Siti Norkamisa @ Siti Nurwahidah bt. Che Harun</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Amirah bt. Azmi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Norfatiha Natasha bt. Mohd Padzlee, Siti Norhidayah bt. Che Musa, Mohamad Nor Azam b. Mohd Shakeri, Nur Hidayah bt. Ramli</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="sejarah-guru">Norfatiha Natasha bt. Mohd Padzlee, Siti Norhidayah bt. Che Musa, Mohamad Nor Azam b. Mohd Shakeri, Nur Hidayah bt. Ramli</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Sejarah</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Sejarah</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
@@ -1869,9 +2036,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Siti Norhidayah bt. Che Musa</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nur Suhaila bt. Lani</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt. Ramli</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Tan Mei Lan, Amirah bt. Azmi</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="geo-guru">Tan Mei Lan, Amirah bt. Azmi</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Geografi</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Geografi</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-mosque"></i></div>
@@ -1880,9 +2047,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Asfazihah bt. Alias</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Mazwan b. Mohamad</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Farah Su'Aidah bt. Osman</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Asfazihah bt. Alias, Mazwan b. Mohamad, Nur Farah Su'Aidah bt. Osman</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="pi-guru">Asfazihah bt. Alias, Mazwan b. Mohamad, Nur Farah Su'Aidah bt. Osman</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia PI</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PI</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
@@ -1891,9 +2058,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Amira Farzana bt. Nik Rosli</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Chan Suet Mey</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Ayuni Shahira bt. Abd. Aziz</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Muhammad A'Aziem b. Badaruddin, Bavani A/P Selvarajah, Siti Norkamisa, Amirah, Nurul Afiqah, Wong Ai Ching</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="moral-guru">Muhammad A'Aziem b. Badaruddin, Bavani A/P Selvarajah, Siti Norkamisa, Amirah, Nurul Afiqah, Wong Ai Ching</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Moral</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Moral</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
@@ -1902,9 +2069,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Ag Fauzi bt. Ag Lahap</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nur Syahirah bt. Abdul Aris</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nurul Syazwani bt. Salim</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Hanizah bt. Hamzah, Suhaila bt. Lani</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="psv-guru">Hanizah bt. Hamzah, Suhaila bt. Lani</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia PSV</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PSV</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-running"></i></div>
@@ -1913,9 +2080,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Muhammad Zikri b. Razali</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Muhammad A'Aziem b. Badaruddin</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt. Saudi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Mohd Azriazizi b. Mustapha, Fathiah bt. Aimi Fadzil, Ayuni Syahira bt. Abd Aziz, Mohd Nor Azam, Nurul Afiqah, Nur Suhaila</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="pjk-guru">Mohd Azriazizi b. Mustapha, Fathiah bt. Aimi Fadzil, Ayuni Syahira bt. Abd Aziz, Mohd Nor Azam, Nurul Afiqah, Nur Suhaila</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia PJK</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PJK</a>
             </div>
         </div>
     </section>
@@ -1933,9 +2100,9 @@
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Chan Suet Mey</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Normaziney bt. Suhamey</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Chan Suet Mey, Norazura bt. Munajat, Normaziney bt. Suhamey</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="perakaunan-guru">Chan Suet Mey, Norazura bt. Munajat, Normaziney bt. Suhamey</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Prinsip Perakaunan</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Perakaunan</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-store"></i></div>
@@ -1943,9 +2110,9 @@
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Norhayati bt. Mohamad</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Athirah Binti Zainuddin</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Norhayati bt. Mohamad, Athirah Binti Zainuddin</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="perniagaan-guru">Norhayati bt. Mohamad, Athirah Binti Zainuddin</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Perniagaan</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Perniagaan</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-coins"></i></div>
@@ -1953,9 +2120,9 @@
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Wong Ai Ching</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Ee Fong Ling</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Norazura bt. Munajat, Wong Ai Ching, Ee Fong Ling</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="ekonomi-guru">Norazura bt. Munajat, Wong Ai Ching, Ee Fong Ling</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia Ekonomi</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Ekonomi</a>
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-tools"></i></div>
@@ -1964,9 +2131,9 @@
                     <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Nurulhasni bt. Mhd Zakuan</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Athirah bt. Zainuddin</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Norfatiha Natasha bt. Mohd Padzlee</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name">Noorliza bt. Abd Khair, Normaziney bt. Suhamey, Nur Hidayah bt Saudi, Ayuni Syahira bt. Abd Aziz</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="rbt-guru">Noorliza bt. Abd Khair, Normaziney bt. Suhamey, Nur Hidayah bt Saudi, Ayuni Syahira bt. Abd Aziz</span></div>
                 </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Akses Fail Panitia RBT</a>
+                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber RBT</a>
             </div>
         </div>
     </section>
@@ -1981,7 +2148,7 @@
             <div class="content-card" style="text-align: left;">
                 <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-user-tie"></i></div>
                 <h4>Pengerusi PBS</h4>
-                <p><strong>Pengerusi:</strong> Rahimah binti Yusop<br>
+                <p class="editable-zone" id="pbs-pengerusi"><strong>Pengerusi:</strong> Rahimah binti Yusop<br>
                 <strong>Timbalan:</strong> Noorliza binti Abd Khair<br>
                 <strong>Naib:</strong> Bavani a/p Selvarajah &amp; Silawati binti Yacob</p>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PBS</a>
@@ -1989,7 +2156,7 @@
             <div class="content-card" style="text-align: left;">
                 <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-file-signature"></i></div>
                 <h4>Setiausaha &amp; AJK</h4>
-                <p><strong>Setiausaha PBS/PBD:</strong> Siti Norhidayah bt. Che Musa<br>
+                <p class="editable-zone" id="pbs-setiausaha"><strong>Setiausaha PBS/PBD:</strong> Siti Norhidayah bt. Che Musa<br>
                 <strong>Penolong:</strong> Nurul Syazwani bt. Salim<br>
                 <strong>SU PAJSK:</strong> Suhanim bt Ismail<br>
                 <strong>SU Psikometrik:</strong> Rashidah binti Ramlan<br>
@@ -1999,7 +2166,7 @@
             <div class="content-card" style="text-align: left;">
                 <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-gavel"></i></div>
                 <h4>Ketua Pentaksir Sekolah (KPMP SPM)</h4>
-                <p>BM: Salwani bt. Mohamed<br>
+                <p class="editable-zone" id="pbs-kpmp">BM: Salwani bt. Mohamed<br>
                 BI: Harmate bt. Abdullah<br>
                 BC: Lau Siew Huong<br>
                 PI: Asfazihah bt. Alias<br>
@@ -2023,7 +2190,7 @@
             <div class="content-card" style="text-align: left;">
                 <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-file-signature"></i></div>
                 <h4>Pengurusan Peperiksaan SPM</h4>
-                <p><strong>S/U Peperiksaan SPM:</strong> Tan Mei Lan<br>
+                <p class="editable-zone" id="spm-pengurusan"><strong>S/U Peperiksaan SPM:</strong> Tan Mei Lan<br>
                 <strong>Penolong S/U SPM:</strong> Nurul Faizin bt. Yusuf<br>
                 <strong>S/U Peperiksaan Dalaman:</strong> Ee Fong Ling<br>
                 <strong>Penolong SU Dalaman 1:</strong> Hafizah bt. Awang Saad<br>
@@ -2033,7 +2200,7 @@
             <div class="content-card" style="text-align: left;">
                 <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-calendar-alt"></i></div>
                 <h4>Tarikh Penting SPM 2026</h4>
-                <p>20 Jul - 03 Ogo: Pentaksiran UTQH SPM<br>
+                <p class="editable-zone" id="spm-tarikh">20 Jul - 03 Ogo: Pentaksiran UTQH SPM<br>
                 10 Ogo - 14 Ogo: Pentaksiran BC SPM<br>
                 17 Ogo - 28 Ogo: Peperiksaan Percubaan SPM<br>
                 20 Nov: Munajat Kecemerlangan SPM<br>
@@ -2294,6 +2461,8 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        const ADMIN_PASSWORD = 'smkSM0250';
+        
         // ============================================================
         // 1. NAVIGATION TOGGLE (Mobile)
         // ============================================================
@@ -2479,7 +2648,126 @@
         });
 
         // ============================================================
-        // 7. INTERSECTION OBSERVER
+        // 7. ADMIN PANEL LOGIC
+        // ============================================================
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const adminOverlay = document.getElementById('adminOverlay');
+        const adminPanel = document.getElementById('adminPanel');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const loginError = document.getElementById('loginError');
+        const passwordInput = document.getElementById('adminPasswordInput');
+        const toggleEditBtn = document.getElementById('toggleEditBtn');
+
+        adminLoginBtn.addEventListener('click', () => {
+            adminOverlay.classList.add('active');
+            passwordInput.value = '';
+            loginError.style.display = 'none';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            adminOverlay.classList.remove('active');
+        });
+
+        window.loginAdmin = function() {
+            const input = passwordInput.value;
+            if (input === ADMIN_PASSWORD) {
+                adminOverlay.classList.remove('active');
+                adminPanel.classList.add('active');
+                // Load saved edits on login
+                loadEdits();
+            } else {
+                loginError.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        };
+
+        window.exitAdmin = function() {
+            adminPanel.classList.remove('active');
+            document.body.classList.remove('is-editing');
+            toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Hidupkan Mod Edit';
+            // Remove contenteditable
+            document.querySelectorAll('.editable-zone').forEach(el => {
+                el.removeAttribute('contenteditable');
+            });
+        };
+
+        window.toggleEditMode = function() {
+            const isEditing = document.body.classList.toggle('is-editing');
+            const zones = document.querySelectorAll('.editable-zone');
+            
+            if (isEditing) {
+                toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Matikan Mod Edit';
+                zones.forEach(el => {
+                    el.setAttribute('contenteditable', 'true');
+                    // Prevents line breaks from breaking the layout too much inside spans
+                    if(el.tagName === 'SPAN') {
+                        el.style.display = 'inline-block';
+                        el.style.width = '100%';
+                    }
+                });
+            } else {
+                toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Hidupkan Mod Edit';
+                zones.forEach(el => {
+                    el.removeAttribute('contenteditable');
+                });
+            }
+        };
+
+        window.saveChanges = function() {
+            const editableZones = document.querySelectorAll('.editable-zone');
+            const dataToSave = {};
+
+            editableZones.forEach(el => {
+                const id = el.id;
+                if(id) {
+                    // Save the inner HTML to preserve line breaks
+                    dataToSave[id] = el.innerHTML;
+                }
+            });
+
+            // Save to localStorage
+            localStorage.setItem('mutiara_curriculum_data', JSON.stringify(dataToSave));
+            
+            // Visual feedback
+            const saveBtn = document.querySelector('.admin-panel .btn-save');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check-circle"></i> Disimpan!';
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+            }, 2000);
+
+            // Turn off edit mode after save
+            if (document.body.classList.contains('is-editing')) {
+                window.toggleEditMode(); 
+            }
+        };
+
+        function loadEdits() {
+            const rawData = localStorage.getItem('mutiara_curriculum_data');
+            if (!rawData) return;
+
+            try {
+                const savedData = JSON.parse(rawData);
+                for (const [id, htmlContent] of Object.entries(savedData)) {
+                    const targetEl = document.getElementById(id);
+                    if (targetEl) {
+                        targetEl.innerHTML = htmlContent;
+                    }
+                }
+            } catch (e) {
+                console.error("Error loading saved edits:", e);
+            }
+        }
+
+        // Load edits automatically on page load (in case the user refreshes while logged in)
+        // Admin panel won't be active, but the content will persist!
+        window.addEventListener('DOMContentLoaded', () => {
+            loadEdits();
+        });
+
+        // ============================================================
+        // 8. INTERSECTION OBSERVER
         // ============================================================
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
@@ -2509,7 +2797,7 @@
         }
 
         console.log('✅ MUTIARA e-KURIKULUM 2026 dimuatkan dengan jayanya.');
-        console.log('🏫 SMK Seri Mutiara, Kuala Lumpur');
+        console.log('🔐 Panel Admin aktif. Kata laluan: smkSM0250');
     </script>
 
 </body>
