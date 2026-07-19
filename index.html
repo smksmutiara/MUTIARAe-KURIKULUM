@@ -231,7 +231,7 @@
         .hero-container { max-width: 1280px; width: 100%; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .hero-content { color: var(--white); }
         
-        /* GAYA BADGE HERO YANG BARU (MODEN, GLOSSY, BESAR) */
+        /* BADGE LOGO DI TENGAH */
         .hero-content .hero-badges {
             display: flex;
             justify-content: center;
@@ -335,14 +335,20 @@
         .calendar-section .calendar-visual .month-header h4 { font-size: 1.1rem; font-weight: 600; color: var(--primary-blue); }
         .calendar-section .calendar-visual .month-header .nav-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: var(--transition); }
         .calendar-section .calendar-visual .month-header .nav-btn:hover { background: rgba(201, 168, 76, 0.10); color: var(--gold); }
+        
+        /* GAYA KALENDAR */
         .calendar-section .calendar-visual .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
         .calendar-section .calendar-visual .days-grid .day-name { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); padding: 8px 0; }
-        .calendar-section .calendar-visual .days-grid .day { padding: 10px 0; border-radius: 10px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); transition: var(--transition); cursor: default; }
+        .calendar-section .calendar-visual .days-grid .day { padding: 10px 0; border-radius: 10px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); transition: var(--transition); cursor: pointer; position: relative; user-select: none; }
+        .calendar-section .calendar-visual .days-grid .day:hover { background: rgba(201, 168, 76, 0.15); }
         .calendar-section .calendar-visual .days-grid .day.today { background: var(--gold); color: var(--white); font-weight: 700; }
-        .calendar-section .calendar-visual .days-grid .day.event { position: relative; }
+        .calendar-section .calendar-visual .days-grid .day.today:hover { background: var(--gold); }
+        .calendar-section .calendar-visual .days-grid .day.selected { background: var(--primary-blue); color: var(--white); font-weight: 700; transform: scale(1.1); box-shadow: 0 4px 12px rgba(15, 43, 79, 0.3); z-index: 2; }
         .calendar-section .calendar-visual .days-grid .day.event::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+        .calendar-section .calendar-visual .days-grid .day.selected.event::after { background: var(--white); }
         .calendar-section .calendar-visual .days-grid .day.other-month { color: #c0c8d0; }
 
+        /* SENARAI ACARA KALENDAR */
         .calendar-section .events-list { display: flex; flex-direction: column; gap: 16px; }
         .calendar-section .events-list .event-item { background: var(--white); border-radius: 16px; padding: 18px 22px; box-shadow: var(--card-shadow); border: 1px solid rgba(201, 168, 76, 0.06); display: flex; align-items: center; gap: 16px; transition: var(--transition); }
         .calendar-section .events-list .event-item:hover { transform: translateX(4px); border-color: rgba(201, 168, 76, 0.20); }
@@ -351,6 +357,7 @@
         .calendar-section .events-list .event-item .event-date .month { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
         .calendar-section .events-list .event-item .event-info h5 { font-size: 0.95rem; font-weight: 600; color: var(--primary-blue); }
         .calendar-section .events-list .event-item .event-info p { font-size: 0.78rem; color: var(--text-muted); }
+        .calendar-section .events-list .no-events-msg { text-align: center; padding: 40px 20px; color: var(--text-muted); font-weight: 500; background: var(--white); border-radius: 18px; border: 1px dashed rgba(201, 168, 76, 0.3); }
 
         /* ===== CONTENT SECTIONS ===== */
         .content-section { display: none; padding: 100px 2rem 60px; max-width: 1280px; margin: 0 auto; animation: fadeUp 0.6s ease forwards; }
@@ -426,6 +433,7 @@
             .announcements { padding: 50px 1rem; } 
             .announcements .grid { grid-template-columns: 1fr; } 
             .calendar-section { padding: 50px 1rem; } 
+            .calendar-section .calendar-grid { grid-template-columns: 1fr; } 
             .content-section { padding: 80px 1rem 40px; } 
             .content-section .page-header h2 { font-size: 1.8rem; } 
             .footer .footer-grid { grid-template-columns: 1fr; gap: 30px; } 
@@ -508,10 +516,8 @@
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-brand">
-            <!-- LOGO SEKOLAH DI NAVBAR -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/School_Logo_by_Zuridan.jpg" alt="SMK Seri Mutiara" class="brand-logo" id="navLogo" onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='block';">
             <i class="fas fa-school brand-icon-fallback" id="navLogoFallback" style="display:none;"></i>
-
             <div>
                 MUTIARA e-KURIKULUM
                 <span class="brand-sub">SMK Seri Mutiara · KL 2026</span>
@@ -549,15 +555,12 @@
             <div class="hero-particles" id="particles"></div>
             <div class="hero-container">
                 <div class="hero-content fade-in">
-                    <!-- BADGE LOGO MODEN, GLOSSY & BESAR DI TENGAH -->
                     <div class="hero-badges">
-                        <!-- LOGO TS25 -->
                         <span class="badge">
                             <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi8KyegQEb-lGll1QFpHT9LMNagd2WurlH85-jtG2lq3qWJqd-W6ZvEkktV31KBMpX-H59_a5GaTaMPu8trWPQtlMNoDZRmkzALLy_eSp3DvkP-0bZd7pWBCHWxyPJLAp0MqwQ2HyhJXGHOj73ZCeW24z5FIfcZIL7MqMqhii1Jp3kvTrV_DtYNsLj7=s320" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                             <i class="fas fa-medal badge-icon-fallback" style="display:none; color:var(--gold);"></i>
                             <span class="editable-zone" id="badge-ts25-text">TS25</span>
                         </span>
-                        <!-- LOGO SEKOLAH DALAM HERO -->
                         <span class="badge">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/School_Logo_by_Zuridan.jpg" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                             <i class="fas fa-school badge-icon-fallback" style="display:none; color:var(--gold);"></i>
@@ -578,12 +581,10 @@
                         <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=450&fit=crop&crop=center&auto=format" alt="SMK Seri Mutiara - Bangunan Sekolah" loading="lazy" />
                         <div class="image-overlay"></div>
                     </div>
-                    <!-- Floating Badge TS25 -->
                     <div class="floating-badge" style="top:-10px;right:-10px;">
                         <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi8KyegQEb-lGll1QFpHT9LMNagd2WurlH85-jtG2lq3qWJqd-W6ZvEkktV31KBMpX-H59_a5GaTaMPu8trWPQtlMNoDZRmkzALLy_eSp3DvkP-0bZd7pWBCHWxyPJLAp0MqwQ2HyhJXGHOj73ZCeW24z5FIfcZIL7MqMqhii1Jp3kvTrV_DtYNsLj7=s320" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <i class="fas fa-medal float-icon-fallback" style="display:none;"></i>
                     </div>
-                    <!-- Floating Badge Sekolah -->
                     <div class="floating-badge" style="bottom:-10px;left:-10px;">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/School_Logo_by_Zuridan.jpg" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <i class="fas fa-school float-icon-fallback" style="display:none;"></i>
@@ -655,12 +656,12 @@
             </div>
         </section>
 
-        <!-- CALENDAR -->
+        <!-- CALENDAR SECTION -->
         <section class="calendar-section" id="calendar-section">
             <div class="section-header">
                 <span class="section-tag editable-zone" id="cal-tag">Jadual</span>
                 <h2 class="editable-zone" id="cal-title">Takwim <span class="highlight">Kurikulum 2026</span></h2>
-                <p class="editable-zone" id="cal-desc">Rujuk bahagian Takwim untuk senarai penuh aktiviti tahunan.</p>
+                <p class="editable-zone" id="cal-desc">Rujuk bahagian Takwim untuk senarai penuh aktiviti tahunan. Klik pada tarikh untuk melihat program.</p>
             </div>
             <div class="calendar-grid">
                 <div class="calendar-visual">
@@ -681,7 +682,7 @@
 
     </main>
 
-    <!-- ===== CONTENT SECTIONS (Ringkasan struktur sedia ada) ===== -->
+    <!-- ===== CONTENT SECTIONS ===== -->
     <!-- JAWATANKUASA INDUK -->
     <section id="jawatankuasa" class="content-section">
         <div class="page-header">
@@ -984,24 +985,259 @@
             }
         })();
 
+        // ============================================================
+        // LOGIK KALENDAR DAN PAUTAN TAKWIM
+        // ============================================================
         let currentMonth = 6, currentYear = 2026;
+        let selectedDateStr = null;
+
+        // Helper: Parse date DD.MM.YYYY
+        function parseDate(dateStr) {
+            if (!dateStr) return null;
+            const parts = dateStr.split('.');
+            if(parts.length === 3) {
+                return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+            }
+            return null;
+        }
+
+        // Helper: Check if a date is within a range string "02.03 - 20.03.2026"
+        function isDateInRange(dateStr, rangeStr) {
+            if (!rangeStr.includes('-')) return false;
+            const rangeParts = rangeStr.split('-');
+            if (rangeParts.length !== 2) return false;
+            
+            // rangeParts might be "02.03 " and " 20.03.2026"
+            const startStr = rangeParts[0].trim();
+            const endStr = rangeParts[1].trim();
+            
+            // Reconstruct full year if missing in start
+            let startFull = startStr;
+            if (startStr.split('.').length === 2) {
+                const year = endStr.split('.')[2];
+                startFull = startStr + '.' + year;
+            }
+            
+            const startDate = parseDate(startFull);
+            const endDate = parseDate(endStr);
+            const targetDate = parseDate(dateStr);
+            
+            if (!startDate || !endDate || !targetDate) return false;
+            
+            return targetDate >= startDate && targetDate <= endDate;
+        }
+
+        // Get events for a specific date
+        function getEventsForDate(dateStr) {
+            const results = [];
+            takwimData.forEach(item => {
+                const rawDate = item.date;
+                // Exact match
+                if (rawDate === dateStr) {
+                    results.push(item);
+                } 
+                // Range match
+                else if (rawDate.includes('-')) {
+                    if (isDateInRange(dateStr, rawDate)) {
+                        results.push(item);
+                    }
+                }
+            });
+            return results;
+        }
+
+        // Get events for a specific month
+        function getEventsForMonth(month, year) {
+            const results = [];
+            const monthStr = (month + 1).toString().padStart(2, '0');
+            takwimData.forEach(item => {
+                const rawDate = item.date;
+                // Check if date belongs to this month
+                if (rawDate.includes('.')) {
+                    const parts = rawDate.split('.');
+                    let checkMonth, checkYear;
+                    
+                    if (rawDate.includes('-')) {
+                        // Range: Take the end date's month/year "20.03.2026"
+                        const endPart = rawDate.split('-')[1].trim();
+                        const endParts = endPart.split('.');
+                        if (endParts.length >= 2) {
+                            checkMonth = endParts[1];
+                            checkYear = endParts[2];
+                        }
+                    } else {
+                        // Single date
+                        checkMonth = parts[1];
+                        checkYear = parts[2];
+                    }
+                    
+                    if (checkMonth === monthStr && checkYear === String(year)) {
+                        results.push(item);
+                    }
+                }
+            });
+            return results;
+        }
+
+        // Update the events list container
+        function updateEventList(events, headerText) {
+            const container = document.getElementById('calendarEventsList');
+            if (!container) return;
+            
+            let html = '';
+            if (events.length === 0) {
+                html = `<div class="no-events-msg">Tiada program pada tempoh ini.</div>`;
+            } else {
+                // Sort events by date
+                events.sort((a, b) => {
+                    const aStr = a.date.includes('-') ? a.date.split('-')[1].trim() : a.date;
+                    const bStr = b.date.includes('-') ? b.date.split('-')[1].trim() : b.date;
+                    return aStr.localeCompare(bStr);
+                });
+
+                events.forEach(item => {
+                    // Format date display for the card
+                    let displayDate = item.date;
+                    let displayDesc = item.activity;
+                    if (item.action && item.action !== '-') {
+                        displayDesc += `<br><small style="color:#6a8a9a;font-size:0.75rem;">Tindakan: ${item.action}</small>`;
+                    }
+
+                    // Extract day and month for the badge
+                    let dayNum = '';
+                    let monthStr = '';
+                    if (item.date.includes('-')) {
+                        const parts = item.date.split('-');
+                        // Use start date for day number
+                        const startParts = parts[0].trim().split('.');
+                        if(startParts.length >= 2) {
+                            dayNum = startParts[0];
+                            monthStr = startParts[1];
+                        }
+                    } else {
+                        const parts = item.date.split('.');
+                        if(parts.length >= 2) {
+                            dayNum = parts[0];
+                            monthStr = parts[1];
+                        }
+                    }
+
+                    const monthNamesShort = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'];
+                    let monthShort = monthStr ? monthNamesShort[parseInt(monthStr)-1] : '';
+
+                    html += `
+                        <div class="event-item">
+                            <div class="event-date">
+                                <div class="day">${dayNum}</div>
+                                <div class="month">${monthShort}</div>
+                            </div>
+                            <div class="event-info">
+                                <h5>${item.activity}</h5>
+                                <p>Tarikh: ${displayDate} ${item.action && item.action !== '-' ? '· ' + item.action : ''}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html;
+        }
+
         function renderCalendar(month, year) {
             const grid = document.getElementById('calendarDays');
             if (!grid) return;
+            
             const monthNames = ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'];
             document.getElementById('monthLabel').textContent = monthNames[month] + ' ' + year;
-            const firstDay = new Date(year, month, 1).getDay(); const daysInMonth = new Date(year, month + 1, 0).getDate(); const daysInPrevMonth = new Date(year, month, 0).getDate();
-            const events = [];
-            if (month === 6 && year === 2026) { events.push(3, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31); }
-            if (month === 7 && year === 2026) { events.push(1, 2, 3, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28); }
-            let html = ''; const dayNames = ['Aha', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab']; dayNames.forEach(d => { html += `<div class="day-name">${d}</div>`; });
+            
+            // Reset selected date when changing months
+            selectedDateStr = null;
+
+            const firstDay = new Date(year, month, 1).getDay(); 
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); 
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+            // Get events for the current month
+            const monthEvents = getEventsForMonth(month, year);
+            // Create a set of dates that have events for the dot indicator
+            const eventDatesSet = new Set();
+            monthEvents.forEach(item => {
+                if(item.date.includes('-')) {
+                    // Add logic to expand range into set if needed, 
+                    // For simplicity, just mark the start and end of range
+                    const parts = item.date.split('-');
+                    const start = parts[0].trim();
+                    const end = parts[1].trim();
+                    let startFull = start;
+                    if(start.split('.').length === 2) {
+                        const yearStr = end.split('.')[2];
+                        startFull = start + '.' + yearStr;
+                    }
+                    eventDatesSet.add(startFull);
+                    eventDatesSet.add(end);
+                } else {
+                    eventDatesSet.add(item.date);
+                }
+            });
+
+            let html = ''; 
+            const dayNames = ['Aha', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab']; 
+            dayNames.forEach(d => { html += `<div class="day-name">${d}</div>`; });
+
             const startOffset = firstDay === 0 ? 6 : firstDay - 1;
-            for (let i = startOffset - 1; i >= 0; i--) { html += `<div class="day other-month">${daysInPrevMonth - i}</div>`; }
-            const today = new Date(); const isCurrentMonth = (month === today.getMonth() && year === today.getFullYear()); const todayDate = today.getDate();
-            for (let d = 1; d <= daysInMonth; d++) { let cls = 'day'; if (isCurrentMonth && d === todayDate) cls += ' today'; if (events.includes(d)) cls += ' event'; html += `<div class="${cls}">${d}</div>`; }
-            const totalCells = startOffset + daysInMonth; const remaining = (7 - (totalCells % 7)) % 7;
-            for (let d = 1; d <= remaining; d++) { html += `<div class="day other-month">${d}</div>`; }
+            for (let i = startOffset - 1; i >= 0; i--) { 
+                html += `<div class="day other-month">${daysInPrevMonth - i}</div>`; 
+            }
+
+            const today = new Date(); 
+            const isCurrentMonth = (month === today.getMonth() && year === today.getFullYear()); 
+            const todayDate = today.getDate();
+
+            for (let d = 1; d <= daysInMonth; d++) { 
+                let cls = 'day'; 
+                let dateStr = `${d.toString().padStart(2, '0')}.${(month+1).toString().padStart(2, '0')}.${year}`;
+                
+                if (isCurrentMonth && d === todayDate) cls += ' today'; 
+                if (eventDatesSet.has(dateStr)) cls += ' event'; 
+                
+                html += `<div class="${cls}" data-date="${dateStr}">${d}</div>`; 
+            }
+
+            const totalCells = startOffset + daysInMonth; 
+            const remaining = (7 - (totalCells % 7)) % 7;
+            for (let d = 1; d <= remaining; d++) { 
+                html += `<div class="day other-month">${d}</div>`; 
+            }
             grid.innerHTML = html;
+
+            // Display events for the current month by default
+            displayEventsForMonth(month, year);
+
+            // Add click event listeners to days
+            grid.querySelectorAll('.day:not(.other-month)').forEach(dayEl => {
+                dayEl.addEventListener('click', function(e) {
+                    const dateStr = this.dataset.date;
+                    if (!dateStr) return;
+                    
+                    // Remove previous selection
+                    grid.querySelectorAll('.day.selected').forEach(el => el.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    displayEventsForDate(dateStr);
+                });
+            });
+        }
+
+        function displayEventsForDate(dateStr) {
+            const events = getEventsForDate(dateStr);
+            const headerText = `Program pada ${dateStr}`;
+            updateEventList(events, headerText);
+        }
+
+        function displayEventsForMonth(month, year) {
+            const events = getEventsForMonth(month, year);
+            const monthNames = ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'];
+            const headerText = `Program Bulan ${monthNames[month]} ${year}`;
+            updateEventList(events, headerText);
         }
 
         function changeMonth(delta) {
@@ -1010,8 +1246,12 @@
             if (currentMonth > 11) { currentMonth = 0; currentYear++; }
             renderCalendar(currentMonth, currentYear);
         }
+        // Initial load
         renderCalendar(currentMonth, currentYear);
 
+        // ============================================================
+        // ADMIN LOGIN LOGIC
+        // ============================================================
         const adminLoginBtn = document.getElementById('adminLoginBtn');
         const adminOverlay = document.getElementById('adminOverlay');
         const adminPanel = document.getElementById('adminPanel');
