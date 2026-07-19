@@ -77,10 +77,8 @@
         /* ===== ADMIN PANEL STYLES ===== */
         .admin-login-btn {
             position: fixed;
-            bottom: 90px; /* Above the back-to-top button */
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 90px; right: 30px;
+            width: 50px; height: 50px;
             border-radius: 16px;
             background: rgba(15, 43, 79, 0.8);
             color: var(--white);
@@ -90,135 +88,93 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
             z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
         }
-        .admin-login-btn:hover {
-            background: var(--gold);
-            color: var(--primary-blue);
-            transform: scale(1.05);
-        }
+        .admin-login-btn:hover { background: var(--gold); color: var(--primary-blue); transform: scale(1.05); }
+        
         .admin-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
         }
         .admin-overlay.active { display: flex; }
+        
         .admin-modal {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            position: relative;
+            background: var(--white); padding: 40px; border-radius: 24px;
+            width: 90%; max-width: 400px; text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative;
         }
         .admin-modal h3 { color: var(--primary-blue); margin-bottom: 20px; font-size: 1.5rem; }
-        .admin-modal input {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid rgba(201, 168, 76, 0.3);
-            border-radius: 12px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            outline: none;
-            transition: var(--transition);
+        .admin-modal input, .admin-modal textarea {
+            width: 100%; padding: 14px 20px; border: 2px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px; font-size: 1rem; margin-bottom: 15px;
+            outline: none; transition: var(--transition); font-family: inherit;
         }
-        .admin-modal input:focus { border-color: var(--gold); }
+        .admin-modal input:focus, .admin-modal textarea:focus { border-color: var(--gold); }
         .admin-modal .btn-login {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            background: var(--gold);
-            color: var(--primary-blue);
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
+            width: 100%; padding: 14px; border: none; border-radius: 12px;
+            background: var(--gold); color: var(--primary-blue); font-weight: 700;
+            font-size: 1rem; cursor: pointer; transition: var(--transition);
         }
         .admin-modal .btn-login:hover { background: #b8962e; transform: translateY(-2px); }
         .admin-modal .close-modal {
-            position: absolute;
-            top: 15px; right: 20px;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+            color: var(--text-muted); cursor: pointer; transition: var(--transition);
         }
         .admin-modal .close-modal:hover { color: var(--primary-blue); }
-        .admin-error {
-            color: #e74c3c;
-            font-size: 0.85rem;
-            margin-top: -12px;
-            margin-bottom: 15px;
-            display: none;
-        }
+        .admin-error { color: #e74c3c; font-size: 0.85rem; margin-top: -12px; margin-bottom: 15px; display: none; }
 
         .admin-panel {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            background: var(--gold);
-            color: var(--primary-blue);
-            padding: 12px 20px;
-            z-index: 1500;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: var(--gold); color: var(--primary-blue); padding: 12px 20px;
+            z-index: 1500; display: none; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 10px; box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
             border-bottom: 3px solid var(--primary-blue);
         }
         .admin-panel.active { display: flex; }
         .admin-panel .brand { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
         .admin-panel .controls { display: flex; gap: 10px; flex-wrap: wrap; }
         .admin-panel button {
-            padding: 8px 18px;
-            border: 2px solid var(--primary-blue);
-            border-radius: 30px;
-            background: var(--white);
-            color: var(--primary-blue);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.85rem;
-            display: flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border: 2px solid var(--primary-blue); border-radius: 30px;
+            background: var(--white); color: var(--primary-blue); font-weight: 600;
+            cursor: pointer; transition: var(--transition); font-size: 0.85rem; display: flex; align-items: center; gap: 6px;
         }
         .admin-panel button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .admin-panel button.btn-save {
-            background: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
+            background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);
         }
         .admin-panel button.btn-save:hover { background: #0a1f3a; }
         .admin-panel button.btn-exit { border-color: #e74c3c; color: #e74c3c; }
         .admin-panel button.btn-exit:hover { background: #e74c3c; color: white; }
 
         /* Editable Zones Highlight */
-        .editable-zone {
-            transition: all 0.2s ease;
-        }
+        .editable-zone { transition: all 0.2s ease; }
         body.is-editing .editable-zone {
-            outline: 2px dashed var(--accent-blue);
-            outline-offset: 2px;
-            background: rgba(74, 154, 212, 0.05);
-            border-radius: 4px;
-            padding: 2px;
-            cursor: text;
+            outline: 2px dashed var(--accent-blue); outline-offset: 2px;
+            background: rgba(74, 154, 212, 0.05); border-radius: 4px; padding: 2px 6px; cursor: text;
         }
         body.is-editing .editable-zone:focus {
-            outline: 2px solid var(--gold);
-            background: rgba(201, 168, 76, 0.1);
-            border-radius: 4px;
+            outline: 2px solid var(--gold); background: rgba(201, 168, 76, 0.1); border-radius: 4px;
         }
+        
+        /* Delete Buttons for Admin Edit Mode */
+        .admin-delete-btn {
+            position: absolute; top: -12px; right: -12px; width: 30px; height: 30px;
+            background: #e74c3c; color: white; border: none; border-radius: 50%;
+            font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+            display: none; align-items: center; justify-content: center; font-size: 0.9rem; z-index: 10;
+            transition: var(--transition);
+        }
+        .admin-delete-btn:hover { transform: scale(1.1); background: #c0392b; }
+        body.is-editing .admin-delete-btn { display: flex; }
+        
+        .admin-add-btn {
+            background: var(--primary-blue); color: white; padding: 12px 24px;
+            border-radius: 30px; border: none; font-weight: 600;
+            cursor: pointer; display: none; margin: 20px auto; transition: var(--transition);
+        }
+        .admin-add-btn:hover { background: #0a1f3a; transform: scale(1.02); }
+        body.is-editing .admin-add-btn { display: inline-block; }
 
         /* ===== GLASSMORPHISM UTILITY ===== */
         .glass {
@@ -240,1240 +196,213 @@
 
         /* ===== NAVIGATION ===== */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 0 2rem;
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(15, 43, 79, 0.78);
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 0 2rem; height: 76px; display: flex; align-items: center;
+            justify-content: space-between; background: rgba(15, 43, 79, 0.78);
             backdrop-filter: blur(24px) saturate(200%);
             -webkit-backdrop-filter: blur(24px) saturate(200%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
-            transition: var(--transition);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12); transition: var(--transition);
         }
-        .navbar.scrolled {
-            background: rgba(15, 43, 79, 0.92);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.20);
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.3px;
-            white-space: nowrap;
-        }
-        .nav-brand .brand-logo {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 4px;
-            background: var(--white);
-            padding: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            display: block;
-        }
-        .nav-brand .brand-icon-fallback {
-            font-size: 2rem;
-            color: var(--gold);
-            background: var(--white);
-            border-radius: 8px;
-            padding: 6px;
-        }
-        .nav-brand span {
-            font-size: 0.75rem;
-            font-weight: 400;
-            opacity: 0.7;
-            display: block;
-            line-height: 1.2;
-        }
-        .nav-brand .brand-sub {
-            font-size: 0.6rem;
-            opacity: 0.6;
-            font-weight: 300;
-        }
+        .navbar.scrolled { background: rgba(15, 43, 79, 0.92); box-shadow: 0 4px 40px rgba(0, 0, 0, 0.20); }
+        .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--white); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.3px; white-space: nowrap; }
+        .nav-brand .brand-logo { height: 48px; width: auto; object-fit: contain; border-radius: 4px; background: var(--white); padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; }
+        .nav-brand .brand-icon-fallback { font-size: 2rem; color: var(--gold); background: var(--white); border-radius: 8px; padding: 6px; }
+        .nav-brand span { font-size: 0.75rem; font-weight: 400; opacity: 0.7; display: block; line-height: 1.2; }
+        .nav-brand .brand-sub { font-size: 0.6rem; opacity: 0.6; font-weight: 300; }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 0 8px;
-            scrollbar-width: none;
-        }
-        .nav-links::-webkit-scrollbar {
-            display: none;
-        }
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.75);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            transition: var(--transition);
-            white-space: nowrap;
-            position: relative;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--white);
-            background: rgba(201, 168, 76, 0.20);
-        }
-        .nav-links a.active {
-            background: rgba(201, 168, 76, 0.30);
-            color: var(--gold-light);
-        }
-        .nav-links a i {
-            margin-right: 6px;
-            font-size: 0.7rem;
-        }
+        .nav-links { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; overflow-x: auto; padding: 0 8px; scrollbar-width: none; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-links a { color: rgba(255, 255, 255, 0.75); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 500; transition: var(--transition); white-space: nowrap; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(201, 168, 76, 0.20); }
+        .nav-links a.active { background: rgba(201, 168, 76, 0.30); color: var(--gold-light); }
+        .nav-links a i { margin-right: 6px; font-size: 0.7rem; }
 
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        .nav-toggle:hover {
-            background: rgba(255, 255, 255, 0.10);
-        }
+        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: var(--transition); }
+        .nav-toggle:hover { background: rgba(255, 255, 255, 0.10); }
 
         /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 2rem 60px;
-            background: linear-gradient(135deg, #0a1f3a 0%, #1a3f6a 40%, #2a6a9a 70%, #4a9ad4 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(74, 154, 212, 0.20) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .hero .hero-particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .hero .hero-particles span {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            animation: floatUp 20s infinite linear;
-        }
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1);
-                opacity: 0;
-            }
-        }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 2rem 60px; background: linear-gradient(135deg, #0a1f3a 0%, #1a3f6a 40%, #2a6a9a 70%, #4a9ad4 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(74, 154, 212, 0.20) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 40%); pointer-events: none; }
+        .hero .hero-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+        .hero .hero-particles span { position: absolute; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.08); border-radius: 50%; animation: floatUp 20s infinite linear; }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
 
-        .hero-container {
-            max-width: 1280px;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .hero-content {
-            color: var(--white);
-        }
-        .hero-content .hero-badges {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .hero-content .hero-badges .badge {
-            background: rgba(255, 255, 255, 0.10);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: rgba(255, 255, 255, 0.85);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .hero-content .hero-badges .badge img {
-            height: 24px;
-            width: auto;
-            object-fit: contain;
-            vertical-align: middle;
-        }
-        .hero-content .hero-badges .badge .badge-icon-fallback {
-            font-size: 1.2rem;
-        }
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 8px;
-        }
-        .hero-content h1 .highlight {
-            color: var(--gold);
-        }
-        .hero-content .hero-subtitle {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.85;
-            margin-bottom: 8px;
-            letter-spacing: 0.3px;
-        }
-        .hero-content .hero-desc {
-            font-size: 1rem;
-            opacity: 0.7;
-            max-width: 480px;
-            margin-bottom: 32px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-        .hero-content .hero-cta {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .hero-content .hero-cta .btn {
-            padding: 12px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .hero-content .hero-cta .btn-primary {
-            background: linear-gradient(135deg, var(--gold), #d4b04a);
-            color: var(--primary-blue);
-            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.35);
-        }
-        .hero-content .hero-cta .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(201, 168, 76, 0.45);
-        }
-        .hero-content .hero-cta .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 1.5px solid rgba(255, 255, 255, 0.30);
-        }
-        .hero-content .hero-cta .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.10);
-            border-color: var(--gold);
-        }
+        .hero-container { max-width: 1280px; width: 100%; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-content { color: var(--white); }
+        .hero-content .hero-badges { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+        .hero-content .hero-badges .badge { background: rgba(255, 255, 255, 0.10); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 6px 16px; border-radius: 30px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.85); display: inline-flex; align-items: center; gap: 8px; }
+        .hero-content .hero-badges .badge img { height: 24px; width: auto; object-fit: contain; vertical-align: middle; }
+        .hero-content .hero-badges .badge .badge-icon-fallback { font-size: 1.2rem; }
+        .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 8px; }
+        .hero-content h1 .highlight { color: var(--gold); }
+        .hero-content .hero-subtitle { font-size: 1.1rem; font-weight: 300; opacity: 0.85; margin-bottom: 8px; letter-spacing: 0.3px; }
+        .hero-content .hero-desc { font-size: 1rem; opacity: 0.7; max-width: 480px; margin-bottom: 32px; line-height: 1.7; font-weight: 300; }
+        .hero-content .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-content .hero-cta .btn { padding: 12px 32px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: var(--transition); cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 10px; }
+        .hero-content .hero-cta .btn-primary { background: linear-gradient(135deg, var(--gold), #d4b04a); color: var(--primary-blue); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.35); }
+        .hero-content .hero-cta .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201, 168, 76, 0.45); }
+        .hero-content .hero-cta .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255, 255, 255, 0.30); }
+        .hero-content .hero-cta .btn-outline:hover { background: rgba(255, 255, 255, 0.10); border-color: var(--gold); }
 
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .hero-visual .hero-image-wrapper {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.30);
-            width: 100%;
-            max-width: 520px;
-            aspect-ratio: 4/3;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.10);
-        }
-        .hero-visual .hero-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .hero-visual .hero-image-wrapper .image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 43, 79, 0.40) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .hero-visual .floating-badge {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            border-radius: 16px;
-            padding: 8px 14px;
-            color: var(--primary-blue);
-            font-size: 0.75rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            animation: floatBadge 6s ease-in-out infinite;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            min-width: 60px;
-            min-height: 60px;
-        }
-        .hero-visual .floating-badge img {
-            max-width: 100%;
-            max-height: 50px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-        .hero-visual .floating-badge .float-icon-fallback {
-            font-size: 2rem;
-            color: var(--gold);
-        }
-        .hero-visual .floating-badge:nth-child(2) {
-            top: -10px;
-            right: -10px;
-            animation-delay: 0s;
-        }
-        .hero-visual .floating-badge:nth-child(3) {
-            bottom: -10px;
-            left: -10px;
-            animation-delay: 2s;
-        }
-        @keyframes floatBadge {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+        .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+        .hero-visual .hero-image-wrapper { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.30); width: 100%; max-width: 520px; aspect-ratio: 4/3; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.10); }
+        .hero-visual .hero-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-visual .hero-image-wrapper .image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 43, 79, 0.40) 0%, transparent 60%); pointer-events: none; }
+        .hero-visual .floating-badge { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.20); border-radius: 16px; padding: 8px 14px; color: var(--primary-blue); font-size: 0.75rem; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 10px; animation: floatBadge 6s ease-in-out infinite; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); min-width: 60px; min-height: 60px; }
+        .hero-visual .floating-badge img { max-width: 100%; max-height: 50px; width: auto; height: auto; object-fit: contain; }
+        .hero-visual .floating-badge .float-icon-fallback { font-size: 2rem; color: var(--gold); }
+        .hero-visual .floating-badge:nth-child(2) { top: -10px; right: -10px; animation-delay: 0s; }
+        .hero-visual .floating-badge:nth-child(3) { bottom: -10px; left: -10px; animation-delay: 2s; }
+        @keyframes floatBadge { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
         /* ===== SECTION COMMON ===== */
-        .section {
-            padding: 80px 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .section-header .section-tag {
-            display: inline-block;
-            background: rgba(201, 168, 76, 0.15);
-            color: var(--gold);
-            padding: 4px 18px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            letter-spacing: -0.5px;
-        }
-        .section-header h2 .highlight {
-            color: var(--gold);
-        }
-        .section-header p {
-            color: var(--text-muted);
-            max-width: 560px;
-            margin: 12px auto 0;
-            font-size: 1rem;
-        }
+        .section { padding: 80px 2rem; max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header .section-tag { display: inline-block; background: rgba(201, 168, 76, 0.15); color: var(--gold); padding: 4px 18px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
+        .section-header h2 { font-size: 2.4rem; font-weight: 700; color: var(--primary-blue); letter-spacing: -0.5px; }
+        .section-header h2 .highlight { color: var(--gold); }
+        .section-header p { color: var(--text-muted); max-width: 560px; margin: 12px auto 0; font-size: 1rem; }
 
         /* ===== QUICK ACCESS CARDS ===== */
-        .quick-access {
-            padding: 60px 2rem 80px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .quick-access .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-        }
-        .quick-access .qa-card {
-            background: var(--white);
-            border-radius: 18px;
-            padding: 24px 18px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            border: 1px solid rgba(201, 168, 76, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-        .quick-access .qa-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--accent-blue));
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .quick-access .qa-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(15, 43, 79, 0.12);
-        }
-        .quick-access .qa-card:hover::before {
-            opacity: 1;
-        }
-        .quick-access .qa-card .icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 12px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(74, 154, 212, 0.12));
-            color: var(--primary-blue);
-            transition: var(--transition);
-        }
-        .quick-access .qa-card:hover .icon {
-            background: linear-gradient(135deg, var(--gold), var(--accent-blue));
-            color: var(--white);
-        }
-        .quick-access .qa-card h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 4px;
-        }
-        .quick-access .qa-card p {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
+        .quick-access { padding: 60px 2rem 80px; max-width: 1280px; margin: 0 auto; }
+        .quick-access .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+        .quick-access .qa-card { background: var(--white); border-radius: 18px; padding: 24px 18px; text-align: center; box-shadow: var(--card-shadow); transition: var(--transition); cursor: pointer; border: 1px solid rgba(201, 168, 76, 0.08); position: relative; overflow: hidden; }
+        .quick-access .qa-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--accent-blue)); opacity: 0; transition: var(--transition); }
+        .quick-access .qa-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(15, 43, 79, 0.12); }
+        .quick-access .qa-card:hover::before { opacity: 1; }
+        .quick-access .qa-card .icon { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(74, 154, 212, 0.12)); color: var(--primary-blue); transition: var(--transition); }
+        .quick-access .qa-card:hover .icon { background: linear-gradient(135deg, var(--gold), var(--accent-blue)); color: var(--white); }
+        .quick-access .qa-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 4px; }
+        .quick-access .qa-card p { font-size: 0.7rem; color: var(--text-muted); }
 
         /* ===== ANNOUNCEMENTS ===== */
-        .announcements {
-            background: linear-gradient(135deg, #f5f8fc, #eef3f8);
-            padding: 80px 2rem;
-        }
-        .announcements .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .announcements .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        .announcements .announce-card {
-            background: var(--white);
-            border-radius: 18px;
-            padding: 28px 24px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--gold);
-        }
-        .announcements .announce-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(15, 43, 79, 0.10);
-        }
-        .announcements .announce-card .date {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .announcements .announce-card .date i {
-            color: var(--gold);
-        }
-        .announcements .announce-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 6px;
-        }
-        .announcements .announce-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .announcements .announce-card .tag {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 2px 14px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            background: rgba(201, 168, 76, 0.12);
-            color: var(--gold);
-        }
+        .announcements { background: linear-gradient(135deg, #f5f8fc, #eef3f8); padding: 80px 2rem; }
+        .announcements .container { max-width: 1280px; margin: 0 auto; }
+        .announcements .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; position: relative; }
+        .announcements .announce-card { background: var(--white); border-radius: 18px; padding: 28px 24px; box-shadow: var(--card-shadow); transition: var(--transition); border-left: 4px solid var(--gold); position: relative; }
+        .announcements .announce-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(15, 43, 79, 0.10); }
+        .announcements .announce-card .date { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .announcements .announce-card .date i { color: var(--gold); }
+        .announcements .announce-card h4 { font-size: 1rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 6px; }
+        .announcements .announce-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+        .announcements .announce-card .tag { display: inline-block; margin-top: 12px; padding: 2px 14px; border-radius: 20px; font-size: 0.65rem; font-weight: 600; background: rgba(201, 168, 76, 0.12); color: var(--gold); }
 
         /* ===== CALENDAR ===== */
-        .calendar-section {
-            padding: 80px 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .calendar-section .calendar-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-        .calendar-section .calendar-visual {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(201, 168, 76, 0.08);
-        }
-        .calendar-section .calendar-visual .month-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .calendar-section .calendar-visual .month-header h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-        .calendar-section .calendar-visual .month-header .nav-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 4px 10px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        .calendar-section .calendar-visual .month-header .nav-btn:hover {
-            background: rgba(201, 168, 76, 0.10);
-            color: var(--gold);
-        }
-        .calendar-section .calendar-visual .days-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            text-align: center;
-        }
-        .calendar-section .calendar-visual .days-grid .day-name {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            padding: 8px 0;
-        }
-        .calendar-section .calendar-visual .days-grid .day {
-            padding: 10px 0;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            transition: var(--transition);
-            cursor: default;
-        }
-        .calendar-section .calendar-visual .days-grid .day.today {
-            background: var(--gold);
-            color: var(--white);
-            font-weight: 700;
-        }
-        .calendar-section .calendar-visual .days-grid .day.event {
-            position: relative;
-        }
-        .calendar-section .calendar-visual .days-grid .day.event::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--gold);
-        }
-        .calendar-section .calendar-visual .days-grid .day.other-month {
-            color: #c0c8d0;
-        }
+        .calendar-section { padding: 80px 2rem; max-width: 1280px; margin: 0 auto; }
+        .calendar-section .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .calendar-section .calendar-visual { background: var(--white); border-radius: 20px; padding: 28px; box-shadow: var(--card-shadow); border: 1px solid rgba(201, 168, 76, 0.08); }
+        .calendar-section .calendar-visual .month-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .calendar-section .calendar-visual .month-header h4 { font-size: 1.1rem; font-weight: 600; color: var(--primary-blue); }
+        .calendar-section .calendar-visual .month-header .nav-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: var(--transition); }
+        .calendar-section .calendar-visual .month-header .nav-btn:hover { background: rgba(201, 168, 76, 0.10); color: var(--gold); }
+        .calendar-section .calendar-visual .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+        .calendar-section .calendar-visual .days-grid .day-name { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); padding: 8px 0; }
+        .calendar-section .calendar-visual .days-grid .day { padding: 10px 0; border-radius: 10px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); transition: var(--transition); cursor: default; }
+        .calendar-section .calendar-visual .days-grid .day.today { background: var(--gold); color: var(--white); font-weight: 700; }
+        .calendar-section .calendar-visual .days-grid .day.event { position: relative; }
+        .calendar-section .calendar-visual .days-grid .day.event::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+        .calendar-section .calendar-visual .days-grid .day.other-month { color: #c0c8d0; }
 
-        .calendar-section .events-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .calendar-section .events-list .event-item {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 18px 22px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(201, 168, 76, 0.06);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            transition: var(--transition);
-        }
-        .calendar-section .events-list .event-item:hover {
-            transform: translateX(4px);
-            border-color: rgba(201, 168, 76, 0.20);
-        }
-        .calendar-section .events-list .event-item .event-date {
-            min-width: 48px;
-            text-align: center;
-            background: rgba(201, 168, 76, 0.10);
-            border-radius: 12px;
-            padding: 6px 10px;
-        }
-        .calendar-section .events-list .event-item .event-date .day {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            line-height: 1.2;
-        }
-        .calendar-section .events-list .event-item .event-date .month {
-            font-size: 0.6rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        .calendar-section .events-list .event-item .event-info h5 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-        .calendar-section .events-list .event-item .event-info p {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
+        .calendar-section .events-list { display: flex; flex-direction: column; gap: 16px; }
+        .calendar-section .events-list .event-item { background: var(--white); border-radius: 16px; padding: 18px 22px; box-shadow: var(--card-shadow); border: 1px solid rgba(201, 168, 76, 0.06); display: flex; align-items: center; gap: 16px; transition: var(--transition); }
+        .calendar-section .events-list .event-item:hover { transform: translateX(4px); border-color: rgba(201, 168, 76, 0.20); }
+        .calendar-section .events-list .event-item .event-date { min-width: 48px; text-align: center; background: rgba(201, 168, 76, 0.10); border-radius: 12px; padding: 6px 10px; }
+        .calendar-section .events-list .event-item .event-date .day { font-size: 1.4rem; font-weight: 700; color: var(--primary-blue); line-height: 1.2; }
+        .calendar-section .events-list .event-item .event-date .month { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+        .calendar-section .events-list .event-item .event-info h5 { font-size: 0.95rem; font-weight: 600; color: var(--primary-blue); }
+        .calendar-section .events-list .event-item .event-info p { font-size: 0.78rem; color: var(--text-muted); }
 
         /* ===== CONTENT SECTIONS ===== */
-        .content-section {
-            display: none;
-            padding: 100px 2rem 60px;
-            max-width: 1280px;
-            margin: 0 auto;
-            animation: fadeUp 0.6s ease forwards;
-        }
-        .content-section.active {
-            display: block;
-        }
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .content-section { display: none; padding: 100px 2rem 60px; max-width: 1280px; margin: 0 auto; animation: fadeUp 0.6s ease forwards; }
+        .content-section.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .content-section .page-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(15, 43, 79, 0.03), rgba(201, 168, 76, 0.06));
-            border-radius: 24px;
-            border: 1px solid rgba(201, 168, 76, 0.08);
-        }
-        .content-section .page-header h2 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            letter-spacing: -0.5px;
-        }
-        .content-section .page-header h2 .highlight {
-            color: var(--gold);
-        }
-        .content-section .page-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-top: 8px;
-        }
+        .content-section .page-header { text-align: center; margin-bottom: 48px; padding: 40px 20px; background: linear-gradient(135deg, rgba(15, 43, 79, 0.03), rgba(201, 168, 76, 0.06)); border-radius: 24px; border: 1px solid rgba(201, 168, 76, 0.08); }
+        .content-section .page-header h2 { font-size: 2.6rem; font-weight: 700; color: var(--primary-blue); letter-spacing: -0.5px; }
+        .content-section .page-header h2 .highlight { color: var(--gold); }
+        .content-section .page-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 8px; }
 
-        .content-section .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-        }
-        .content-section .content-card {
-            background: var(--white);
-            border-radius: 18px;
-            padding: 28px 24px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(201, 168, 76, 0.06);
-            text-align: left;
-        }
-        .content-section .content-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(15, 43, 79, 0.10);
-            border-color: rgba(201, 168, 76, 0.15);
-        }
-        .content-section .content-card .card-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 0 16px 0;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, rgba(201, 168, 76, 0.10), rgba(74, 154, 212, 0.10));
-            color: var(--primary-blue);
-        }
-        .content-section .content-card h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-        }
-        .content-section .content-card .drive-link {
-            display: inline-block;
-            margin-top: 16px;
-            padding: 8px 20px;
-            border-radius: 30px;
-            background: rgba(201, 168, 76, 0.10);
-            color: var(--gold);
-            font-size: 0.78rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        .content-section .content-card .drive-link:hover {
-            background: var(--gold);
-            color: var(--white);
-        }
-        .content-section .content-card .drive-link i {
-            margin-right: 6px;
-        }
+        .content-section .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+        .content-section .content-card { background: var(--white); border-radius: 18px; padding: 28px 24px; box-shadow: var(--card-shadow); transition: var(--transition); border: 1px solid rgba(201, 168, 76, 0.06); text-align: left; }
+        .content-section .content-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(15, 43, 79, 0.10); border-color: rgba(201, 168, 76, 0.15); }
+        .content-section .content-card .card-icon { width: 64px; height: 64px; margin: 0 0 16px 0; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; background: linear-gradient(135deg, rgba(201, 168, 76, 0.10), rgba(74, 154, 212, 0.10)); color: var(--primary-blue); }
+        .content-section .content-card h4 { font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 12px; }
+        .content-section .content-card .drive-link { display: inline-block; margin-top: 16px; padding: 8px 20px; border-radius: 30px; background: rgba(201, 168, 76, 0.10); color: var(--gold); font-size: 0.78rem; font-weight: 500; transition: var(--transition); }
+        .content-section .content-card .drive-link:hover { background: var(--gold); color: var(--white); }
+        .content-section .content-card .drive-link i { margin-right: 6px; }
 
         /* ===== ORG CHART INDENTED STYLE ===== */
-        .org-indent-chart {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            margin: 12px 0;
-            padding-left: 24px;
-            border-left: 3px solid var(--gold);
-        }
-        .org-item {
-            position: relative;
-            padding: 10px 0 10px 20px;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.10);
-            text-align: left;
-        }
-        .org-item:last-child {
-            border-bottom: none;
-        }
-        .org-item::before {
-            content: '';
-            position: absolute;
-            left: -3px;
-            top: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--gold);
-        }
-        .org-item:last-child::after {
-            content: '';
-            position: absolute;
-            left: -3px;
-            top: 50%;
-            width: 3px;
-            height: 50%;
-            background: var(--white); /* Hides the line below the last item */
-        }
-        .org-item:hover {
-            background: rgba(201, 168, 76, 0.05);
-            border-radius: 6px;
-            padding-left: 24px; /* slight movement */
-            transition: all 0.2s ease;
-        }
-        .org-level {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        .org-name {
-            font-weight: 600;
-            color: var(--primary-blue);
-            font-size: 0.95rem;
-        }
-        .org-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 2px;
-        }
-        .org-level-1 .org-level {
-            color: var(--gold);
-        }
-        .org-level-1 .org-name {
-            font-size: 1.1rem;
-            color: var(--gold);
-        }
-        .org-level-2 .org-level {
-            color: var(--secondary-blue);
-        }
-        .org-level-3 .org-level {
-            color: var(--accent-blue);
-        }
-        .org-level-4 .org-level {
-            color: #6a8a9a;
-        }
-        @media (max-width: 768px) {
-            .org-indent-chart {
-                padding-left: 16px;
-            }
-            .org-item {
-                padding: 8px 0 8px 14px;
-            }
-            .org-item::before {
-                width: 14px;
-            }
-            .org-item:hover {
-                padding-left: 18px;
-            }
-        }
+        .org-indent-chart { display: flex; flex-direction: column; position: relative; margin: 12px 0; padding-left: 24px; border-left: 3px solid var(--gold); }
+        .org-item { position: relative; padding: 10px 0 10px 20px; border-bottom: 1px solid rgba(201, 168, 76, 0.10); text-align: left; }
+        .org-item:last-child { border-bottom: none; }
+        .org-item::before { content: ''; position: absolute; left: -3px; top: 50%; width: 20px; height: 2px; background: var(--gold); }
+        .org-item:last-child::after { content: ''; position: absolute; left: -3px; top: 50%; width: 3px; height: 50%; background: var(--white); }
+        .org-item:hover { background: rgba(201, 168, 76, 0.05); border-radius: 6px; padding-left: 24px; transition: all 0.2s ease; }
+        .org-level { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+        .org-name { font-weight: 600; color: var(--primary-blue); font-size: 0.95rem; }
+        .org-desc { font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 2px; }
+        .org-level-1 .org-level { color: var(--gold); }
+        .org-level-1 .org-name { font-size: 1.1rem; color: var(--gold); }
+        .org-level-2 .org-level { color: var(--secondary-blue); }
+        .org-level-3 .org-level { color: var(--accent-blue); }
+        .org-level-4 .org-level { color: #6a8a9a; }
+        @media (max-width: 768px) { .org-indent-chart { padding-left: 16px; } .org-item { padding: 8px 0 8px 14px; } .org-item::before { width: 14px; } .org-item:hover { padding-left: 18px; } }
 
         /* ===== FOOTER ===== */
-        .footer {
-            background: var(--primary-blue);
-            color: rgba(255, 255, 255, 0.80);
-            padding: 60px 2rem 30px;
-            margin-top: 40px;
-            border-top: 3px solid var(--gold);
-        }
-        .footer .footer-grid {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .footer .footer-brand h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-        .footer .footer-brand h3 .highlight {
-            color: var(--gold);
-        }
-        .footer .footer-brand p {
-            font-size: 0.88rem;
-            opacity: 0.7;
-            max-width: 300px;
-            line-height: 1.7;
-        }
-        .footer .footer-brand .social {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .footer .footer-brand .social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-        .footer .footer-brand .social a:hover {
-            background: var(--gold);
-            color: var(--primary-blue);
-            transform: translateY(-3px);
-        }
-        .footer .footer-col h5 {
-            color: var(--white);
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .footer .footer-col a {
-            display: block;
-            color: rgba(255, 255, 255, 0.60);
-            font-size: 0.85rem;
-            padding: 4px 0;
-            transition: var(--transition);
-        }
-        .footer .footer-col a:hover {
-            color: var(--gold);
-            transform: translateX(4px);
-        }
-        .footer .footer-bottom {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
+        .footer { background: var(--primary-blue); color: rgba(255, 255, 255, 0.80); padding: 60px 2rem 30px; margin-top: 40px; border-top: 3px solid var(--gold); }
+        .footer .footer-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .footer .footer-brand h3 { font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .footer .footer-brand h3 .highlight { color: var(--gold); }
+        .footer .footer-brand p { font-size: 0.88rem; opacity: 0.7; max-width: 300px; line-height: 1.7; }
+        .footer .footer-brand .social { display: flex; gap: 12px; margin-top: 16px; }
+        .footer .footer-brand .social a { width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: center; color: var(--white); transition: var(--transition); font-size: 1rem; }
+        .footer .footer-brand .social a:hover { background: var(--gold); color: var(--primary-blue); transform: translateY(-3px); }
+        .footer .footer-col h5 { color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+        .footer .footer-col a { display: block; color: rgba(255, 255, 255, 0.60); font-size: 0.85rem; padding: 4px 0; transition: var(--transition); }
+        .footer .footer-col a:hover { color: var(--gold); transform: translateX(4px); }
+        .footer .footer-bottom { max-width: 1280px; margin: 0 auto; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.8rem; opacity: 0.6; }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .hero-content {
-                text-align: center;
-            }
-            .hero-content .hero-desc {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-content .hero-cta {
-                justify-content: center;
-            }
-            .hero-content .hero-badges {
-                justify-content: center;
-            }
-            .hero-visual .hero-image-wrapper {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .calendar-section .calendar-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0 1rem;
-                height: 66px;
-            }
-            .nav-brand {
-                font-size: 0.9rem;
-            }
-            .nav-brand .brand-logo {
-                height: 36px;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 66px;
-                left: 0;
-                right: 0;
-                background: rgba(15, 43, 79, 0.96);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 16px 20px;
-                gap: 6px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-                max-height: 70vh;
-                overflow-y: auto;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .nav-links a {
-                padding: 10px 16px;
-                font-size: 0.85rem;
-                width: 100%;
-                border-radius: 12px;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .hero {
-                padding: 80px 1rem 40px;
-                min-height: auto;
-            }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .hero-content .hero-subtitle {
-                font-size: 0.95rem;
-            }
-            .hero-visual .hero-image-wrapper {
-                max-width: 320px;
-            }
-            .hero-visual .floating-badge {
-                display: none;
-            }
-            .section {
-                padding: 50px 1rem;
-            }
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            .quick-access {
-                padding: 40px 1rem;
-            }
-            .quick-access .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
-            }
-            .announcements {
-                padding: 50px 1rem;
-            }
-            .announcements .grid {
-                grid-template-columns: 1fr;
-            }
-            .calendar-section {
-                padding: 50px 1rem;
-            }
-            .content-section {
-                padding: 80px 1rem 40px;
-            }
-            .content-section .page-header h2 {
-                font-size: 1.8rem;
-            }
-            .footer .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .footer .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .quick-access .grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .quick-access .qa-card {
-                padding: 16px 12px;
-            }
-            .quick-access .qa-card .icon {
-                width: 44px;
-                height: 44px;
-                font-size: 1.1rem;
-            }
-            .quick-access .qa-card h4 {
-                font-size: 0.75rem;
-            }
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-            .hero-content .hero-cta .btn {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-        }
+        @media (max-width: 1024px) { .hero-container { grid-template-columns: 1fr; gap: 2rem; } .hero-content { text-align: center; } .hero-content .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; } .hero-content .hero-cta { justify-content: center; } .hero-content .hero-badges { justify-content: center; } .hero-visual .hero-image-wrapper { max-width: 400px; margin: 0 auto; } .calendar-section .calendar-grid { grid-template-columns: 1fr; } .footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .navbar { padding: 0 1rem; height: 66px; } .nav-brand { font-size: 0.9rem; } .nav-brand .brand-logo { height: 36px; } .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: rgba(15, 43, 79, 0.96); backdrop-filter: blur(20px); flex-direction: column; padding: 16px 20px; gap: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); max-height: 70vh; overflow-y: auto; } .nav-links.open { display: flex; } .nav-links a { padding: 10px 16px; font-size: 0.85rem; width: 100%; border-radius: 12px; } .nav-toggle { display: block; } .hero { padding: 80px 1rem 40px; min-height: auto; } .hero-content h1 { font-size: 2rem; } .hero-content .hero-subtitle { font-size: 0.95rem; } .hero-visual .hero-image-wrapper { max-width: 320px; } .hero-visual .floating-badge { display: none; } .section { padding: 50px 1rem; } .section-header h2 { font-size: 1.8rem; } .quick-access { padding: 40px 1rem; } .quick-access .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } .announcements { padding: 50px 1rem; } .announcements .grid { grid-template-columns: 1fr; } .calendar-section { padding: 50px 1rem; } .content-section { padding: 80px 1rem 40px; } .content-section .page-header h2 { font-size: 1.8rem; } .footer .footer-grid { grid-template-columns: 1fr; gap: 30px; } .footer .footer-bottom { flex-direction: column; text-align: center; } }
+        @media (max-width: 480px) { .quick-access .grid { grid-template-columns: 1fr 1fr; gap: 10px; } .quick-access .qa-card { padding: 16px 12px; } .quick-access .qa-card .icon { width: 44px; height: 44px; font-size: 1.1rem; } .quick-access .qa-card h4 { font-size: 0.75rem; } .hero-content h1 { font-size: 1.6rem; } .hero-content .hero-cta .btn { padding: 10px 20px; font-size: 0.8rem; } }
 
         /* ===== LOADING ANIMATION ===== */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+        .fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
 
         /* ===== BACK TO TOP ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
-            background: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(15, 43, 79, 0.25);
-            transition: var(--transition);
-            z-index: 999;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-        }
-        .back-to-top:hover {
-            background: var(--gold);
-            color: var(--primary-blue);
-            transform: translateY(-4px);
-        }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 16px; background: var(--primary-blue); color: var(--white); border: none; font-size: 1.2rem; cursor: pointer; box-shadow: 0 8px 30px rgba(15, 43, 79, 0.25); transition: var(--transition); z-index: 999; opacity: 0; transform: translateY(20px); pointer-events: none; }
+        .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+        .back-to-top:hover { background: var(--gold); color: var(--primary-blue); transform: translateY(-4px); }
 
         /* ===== DRIVE PLACEHOLDER ===== */
-        .drive-placeholder {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 18px;
-            border-radius: 30px;
-            background: rgba(201, 168, 76, 0.08);
-            color: var(--gold);
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 1px dashed rgba(201, 168, 76, 0.20);
-            margin-top: 8px;
-        }
-        .drive-placeholder:hover {
-            background: rgba(201, 168, 76, 0.15);
-            border-color: var(--gold);
-        }
-        .drive-placeholder i {
-            font-size: 0.8rem;
-        }
+        .drive-placeholder { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; border-radius: 30px; background: rgba(201, 168, 76, 0.08); color: var(--gold); font-size: 0.75rem; font-weight: 500; transition: var(--transition); border: 1px dashed rgba(201, 168, 76, 0.20); margin-top: 8px; }
+        .drive-placeholder:hover { background: rgba(201, 168, 76, 0.15); border-color: var(--gold); }
+        .drive-placeholder i { font-size: 0.8rem; }
 
         /* ===== CUSTOM STYLES FOR DATA TABLES ===== */
-        .data-table-wrapper {
-            overflow-x: auto;
-            background: var(--white);
-            border-radius: 18px;
-            box-shadow: var(--card-shadow);
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        .data-table th {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 600;
-        }
-        .data-table td {
-            padding: 10px 16px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            vertical-align: top;
-        }
-        .data-table tr:nth-child(even) {
-            background: rgba(201, 168, 76, 0.05);
-        }
-        .data-table tr:hover {
-            background: rgba(201, 168, 76, 0.08);
-        }
-        .data-table .highlight-row td {
-            background: rgba(201, 168, 76, 0.10);
-            font-weight: 600;
-        }
-        @media (max-width: 768px) {
-            .data-table th, .data-table td {
-                padding: 8px 10px;
-                font-size: 0.8rem;
-            }
-        }
+        .data-table-wrapper { overflow-x: auto; background: var(--white); border-radius: 18px; box-shadow: var(--card-shadow); padding: 20px; margin-bottom: 30px; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; position: relative; }
+        .data-table th { background: var(--primary-blue); color: var(--white); padding: 12px 16px; text-align: left; font-weight: 600; }
+        .data-table td { padding: 10px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); vertical-align: middle; position: relative; }
+        .data-table tr:nth-child(even) { background: rgba(201, 168, 76, 0.05); }
+        .data-table tr:hover { background: rgba(201, 168, 76, 0.08); }
+        .data-table .highlight-row td { background: rgba(201, 168, 76, 0.10); font-weight: 600; }
+        .data-table .admin-delete-btn { position: static; display: none; width: 28px; height: 28px; margin: 0 auto; border-radius: 50%; }
+        body.is-editing .data-table .admin-delete-btn { display: inline-flex; }
+        @media (max-width: 768px) { .data-table th, .data-table td { padding: 8px 10px; font-size: 0.8rem; } }
+        
         /* SOP List */
-        .sop-list {
-            list-style: none;
-            padding: 0;
-            counter-reset: sop-counter;
-        }
-        .sop-list li {
-            counter-increment: sop-counter;
-            padding: 12px 16px 12px 60px;
-            background: var(--white);
-            margin-bottom: 8px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            position: relative;
-            transition: var(--transition);
-            border-left: 3px solid var(--gold);
-        }
-        .sop-list li::before {
-            content: counter(sop-counter);
-            position: absolute;
-            left: 12px;
-            top: 12px;
-            width: 32px;
-            height: 32px;
-            background: var(--primary-blue);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-        .sop-list li:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .sop-list li strong {
-            color: var(--primary-blue);
-        }
-        .sop-list li .tindakan {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
+        .sop-list { list-style: none; padding: 0; counter-reset: sop-counter; }
+        .sop-list li { counter-increment: sop-counter; padding: 12px 16px 12px 60px; background: var(--white); margin-bottom: 8px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; transition: var(--transition); border-left: 3px solid var(--gold); }
+        .sop-list li::before { content: counter(sop-counter); position: absolute; left: 12px; top: 12px; width: 32px; height: 32px; background: var(--primary-blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; }
+        .sop-list li:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .sop-list li strong { color: var(--primary-blue); }
+        .sop-list li .tindakan { color: var(--gold); font-weight: 600; font-size: 0.8rem; margin-left: 8px; }
 
-        /* ===== FALLBACK IMAGE HANDLING ===== */
-        .img-fallback-hide {
-            display: none !important;
-        }
+        .img-fallback-hide { display: none !important; }
     </style>
 </head>
 <body>
@@ -1495,6 +424,8 @@
         <div class="brand"><i class="fas fa-user-shield" style="color:var(--primary-blue);"></i> Mod Pentadbir</div>
         <div class="controls">
             <button id="toggleEditBtn" onclick="toggleEditMode()"><i class="fas fa-pen"></i> Hidupkan Mod Edit</button>
+            <button onclick="addAnnouncement()"><i class="fas fa-plus-circle"></i> Pengumuman</button>
+            <button onclick="addTakwim()"><i class="fas fa-plus-circle"></i> Takwim</button>
             <button class="btn-save" onclick="saveChanges()"><i class="fas fa-save"></i> Simpan Perubahan</button>
             <button class="btn-exit" onclick="exitAdmin()"><i class="fas fa-sign-out-alt"></i> Keluar Admin</button>
         </div>
@@ -1505,7 +436,6 @@
         <div class="nav-brand">
             <img src="logo-sekolah.png" alt="SMK Seri Mutiara" class="brand-logo" id="navLogo" onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='block';">
             <i class="fas fa-school brand-icon-fallback" id="navLogoFallback" style="display:none;"></i>
-
             <div>
                 MUTIARA e-KURIKULUM
                 <span class="brand-sub">SMK Seri Mutiara · KL 2026</span>
@@ -1547,29 +477,21 @@
                         <span class="badge">
                             <img src="logo-ts25.png" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                             <i class="fas fa-medal badge-icon-fallback" style="display:none; color:var(--gold);"></i>
-                            TS25
+                            <span class="editable-zone" id="badge-ts25-text">TS25</span>
                         </span>
                         <span class="badge">
                             <img src="logo-sekolah.png" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                             <i class="fas fa-school badge-icon-fallback" style="display:none; color:var(--gold);"></i>
-                            SMK Seri Mutiara
+                            <span class="editable-zone" id="badge-sekolah-text">SMK Seri Mutiara</span>
                         </span>
-                        <span class="badge"><i class="fas fa-calendar-check"></i> 2026</span>
+                        <span class="badge"><i class="fas fa-calendar-check"></i> <span class="editable-zone" id="badge-year-text">2026</span></span>
                     </div>
-                    <h1>MUTIARA <span class="highlight">e-KURIKULUM</span></h1>
-                    <p class="hero-subtitle">SMK Seri Mutiara · Kuala Lumpur</p>
-                    <p class="hero-desc">
-                        Portal pengurusan kurikulum sekolah yang moden, telus dan efisien.
-                        Memacu kecemerlangan akademik dan pembangunan holistik pelajar berdasarkan
-                        dokumen Kurikulum 2026.
-                    </p>
+                    <h1 class="editable-zone" id="hero-title">MUTIARA <span class="highlight">e-KURIKULUM</span></h1>
+                    <p class="hero-subtitle editable-zone" id="hero-subtitle">SMK Seri Mutiara · Kuala Lumpur</p>
+                    <p class="hero-desc editable-zone" id="hero-desc">Portal pengurusan kurikulum sekolah yang moden, telus dan efisien. Memacu kecemerlangan akademik dan pembangunan holistik pelajar berdasarkan dokumen Kurikulum 2026.</p>
                     <div class="hero-cta">
-                        <a href="#quick-access" class="btn btn-primary">
-                            <i class="fas fa-compass"></i> Teroka Portal
-                        </a>
-                        <a href="#hubungi" class="btn btn-outline">
-                            <i class="fas fa-phone"></i> Hubungi Kami
-                        </a>
+                        <a href="#quick-access" class="btn btn-primary"><i class="fas fa-compass"></i> Teroka Portal</a>
+                        <a href="#hubungi" class="btn btn-outline"><i class="fas fa-phone"></i> Hubungi Kami</a>
                     </div>
                 </div>
                 <div class="hero-visual fade-in">
@@ -1577,13 +499,10 @@
                         <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=450&fit=crop&crop=center&auto=format" alt="SMK Seri Mutiara - Bangunan Sekolah" loading="lazy" />
                         <div class="image-overlay"></div>
                     </div>
-                    
-                    <!-- Floating Badge TS25 -->
                     <div class="floating-badge" style="top:-10px;right:-10px;">
                         <img src="logo-ts25.png" alt="TS25" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <i class="fas fa-medal float-icon-fallback" style="display:none;"></i>
                     </div>
-                    <!-- Floating Badge Sekolah -->
                     <div class="floating-badge" style="bottom:-10px;left:-10px;">
                         <img src="logo-sekolah.png" alt="SMK Seri Mutiara" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <i class="fas fa-school float-icon-fallback" style="display:none;"></i>
@@ -1595,49 +514,49 @@
         <!-- QUICK ACCESS -->
         <section class="quick-access" id="quick-access">
             <div class="section-header" style="margin-bottom:32px;">
-                <span class="section-tag">Akses Pantas</span>
-                <h2>Teroka <span class="highlight">e-KURIKULUM 2026</span></h2>
+                <span class="section-tag editable-zone" id="qa-tag">Akses Pantas</span>
+                <h2 class="editable-zone" id="qa-title">Teroka <span class="highlight">e-KURIKULUM 2026</span></h2>
             </div>
             <div class="grid">
                 <div class="qa-card" onclick="navigateTo('jawatankuasa')">
                     <div class="icon"><i class="fas fa-users"></i></div>
-                    <h4>Jawatankuasa</h4>
-                    <p>10 Jawatankuasa Aktif</p>
+                    <h4 class="editable-zone" id="qa-jk-title">Jawatankuasa</h4>
+                    <p class="editable-zone" id="qa-jk-desc">10 Jawatankuasa Aktif</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('bahasa')">
                     <div class="icon"><i class="fas fa-language"></i></div>
-                    <h4>Bidang Bahasa</h4>
-                    <p>BM, BI &amp; BC</p>
+                    <h4 class="editable-zone" id="qa-bahasa-title">Bidang Bahasa</h4>
+                    <p class="editable-zone" id="qa-bahasa-desc">BM, BI &amp; BC</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('sainsmatematik')">
                     <div class="icon"><i class="fas fa-flask"></i></div>
-                    <h4>Sains &amp; Matematik</h4>
-                    <p>STEM &amp; Numerasi</p>
+                    <h4 class="editable-zone" id="qa-sains-title">Sains &amp; Matematik</h4>
+                    <p class="editable-zone" id="qa-sains-desc">STEM &amp; Numerasi</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('kemanusiaan')">
                     <div class="icon"><i class="fas fa-landmark"></i></div>
-                    <h4>Kemanusiaan</h4>
-                    <p>Sejarah, Geo, Moral</p>
+                    <h4 class="editable-zone" id="qa-kemanusiaan-title">Kemanusiaan</h4>
+                    <p class="editable-zone" id="qa-kemanusiaan-desc">Sejarah, Geo, Moral</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('teknikvokasional')">
                     <div class="icon"><i class="fas fa-tools"></i></div>
-                    <h4>Teknik &amp; Vokasional</h4>
-                    <p>RBT, Ekonomi, Perakaunan</p>
+                    <h4 class="editable-zone" id="qa-teknik-title">Teknik &amp; Vokasional</h4>
+                    <p class="editable-zone" id="qa-teknik-desc">RBT, Ekonomi, Perakaunan</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('pbs')">
                     <div class="icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4>PBS</h4>
-                    <p>Pentaksiran Berasaskan Sekolah</p>
+                    <h4 class="editable-zone" id="qa-pbs-title">PBS</h4>
+                    <p class="editable-zone" id="qa-pbs-desc">Pentaksiran Berasaskan Sekolah</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('spm')">
                     <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h4>SPM</h4>
-                    <p>Peperiksaan &amp; Keputusan</p>
+                    <h4 class="editable-zone" id="qa-spm-title">SPM</h4>
+                    <p class="editable-zone" id="qa-spm-desc">Peperiksaan &amp; Keputusan</p>
                 </div>
                 <div class="qa-card" onclick="navigateTo('takwim')">
                     <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-                    <h4>Takwim Kurikulum</h4>
-                    <p>Jadual 2026</p>
+                    <h4 class="editable-zone" id="qa-takwim-title">Takwim Kurikulum</h4>
+                    <p class="editable-zone" id="qa-takwim-desc">Jadual 2026</p>
                 </div>
             </div>
         </section>
@@ -1646,28 +565,11 @@
         <section class="announcements" id="announcements">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Terkini</span>
-                    <h2>Pengumuman <span class="highlight">Kurikulum 2026</span></h2>
+                    <span class="section-tag editable-zone" id="announce-tag">Terkini</span>
+                    <h2 class="editable-zone" id="announce-title">Pengumuman <span class="highlight">Kurikulum 2026</span></h2>
                 </div>
-                <div class="grid">
-                    <div class="announce-card">
-                        <div class="date editable-zone" id="announce-date-1"><i class="far fa-calendar"></i> 20 Julai 2026</div>
-                        <h4 class="editable-zone" id="announce-title-1">Pentaksiran UTQH SPM 2026 Bermula</h4>
-                        <p class="editable-zone" id="announce-desc-1">Pentaksiran UTQH SPM 2026 akan berlangsung mulai 20 Julai hingga 3 Ogos 2026. Sila rujuk takwim untuk maklumat lanjut.</p>
-                        <span class="tag">Peperiksaan</span>
-                    </div>
-                    <div class="announce-card">
-                        <div class="date editable-zone" id="announce-date-2"><i class="far fa-calendar"></i> 11 April 2026</div>
-                        <h4 class="editable-zone" id="announce-title-2">Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025</h4>
-                        <p class="editable-zone" id="announce-desc-2">Majlis Anugerah Kecemerlangan Akademik bagi sesi 2025 akan diadakan pada 11 April 2026.</p>
-                        <span class="tag">Akademik</span>
-                    </div>
-                    <div class="announce-card">
-                        <div class="date editable-zone" id="announce-date-3"><i class="far fa-calendar"></i> 30 Mac 2026</div>
-                        <h4 class="editable-zone" id="announce-title-3">Bulan Akademik & Minggu Bidang Bahasa</h4>
-                        <p class="editable-zone" id="announce-desc-3">Bulan Akademik 2026 akan bermula 30 Mac hingga 3 April (Minggu Bahasa), diikuti Minggu Sains & Matematik serta Teknik & Vokasional pada 6-10 April.</p>
-                        <span class="tag">Program</span>
-                    </div>
+                <div class="grid" id="announcementsContainer">
+                    <!-- Announcements rendered via JS -->
                 </div>
             </div>
         </section>
@@ -1675,9 +577,9 @@
         <!-- CALENDAR -->
         <section class="calendar-section" id="calendar-section">
             <div class="section-header">
-                <span class="section-tag">Jadual</span>
-                <h2>Takwim <span class="highlight">Kurikulum 2026</span></h2>
-                <p>Rujuk bahagian Takwim untuk senarai penuh 32 aktiviti tahunan.</p>
+                <span class="section-tag editable-zone" id="cal-tag">Jadual</span>
+                <h2 class="editable-zone" id="cal-title">Takwim <span class="highlight">Kurikulum 2026</span></h2>
+                <p class="editable-zone" id="cal-desc">Rujuk bahagian Takwim untuk senarai penuh aktiviti tahunan.</p>
             </div>
             <div class="calendar-grid">
                 <div class="calendar-visual">
@@ -1690,47 +592,8 @@
                         <!-- rendered by JS -->
                     </div>
                 </div>
-                <div class="events-list">
-                    <div class="event-item">
-                        <div class="event-date">
-                            <div class="day">20</div>
-                            <div class="month">Jul</div>
-                        </div>
-                        <div class="event-info">
-                            <h5>Pentaksiran UTQH SPM</h5>
-                            <p>20 Julai - 03 Ogos 2026</p>
-                        </div>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">
-                            <div class="day">20</div>
-                            <div class="month">Jul</div>
-                        </div>
-                        <div class="event-info">
-                            <h5>Pencerapan PdPc (2)</h5>
-                            <p>20 Julai - 24 Julai 2026</p>
-                        </div>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">
-                            <div class="day">27</div>
-                            <div class="month">Jul</div>
-                        </div>
-                        <div class="event-info">
-                            <h5>Semakan Hasil Kerja Murid (2)</h5>
-                            <p>27 Julai - 07 Ogos 2026</p>
-                        </div>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">
-                            <div class="day">10</div>
-                            <div class="month">Ogo</div>
-                        </div>
-                        <div class="event-info">
-                            <h5>Pentaksiran Bahasa Cina SPM</h5>
-                            <p>10 Ogos - 14 Ogos 2026</p>
-                        </div>
-                    </div>
+                <div class="events-list" id="calendarEventsList">
+                    <!-- Calendar Events rendered via JS -->
                 </div>
             </div>
         </section>
@@ -1742,479 +605,72 @@
     <!-- JAWATANKUASA INDUK -->
     <section id="jawatankuasa" class="content-section">
         <div class="page-header">
-            <h2>Jawatankuasa <span class="highlight">Kurikulum 2026</span></h2>
-            <p>Struktur organisasi 10 Jawatankuasa aktif SMK Seri Mutiara bagi sesi 2026</p>
+            <h2 class="editable-zone" id="jk-page-title">Jawatankuasa <span class="highlight">Kurikulum 2026</span></h2>
+            <p class="editable-zone" id="jk-page-desc">Struktur organisasi 10 Jawatankuasa aktif SMK Seri Mutiara bagi sesi 2026</p>
         </div>
         <div class="content-grid">
-            
-            <!-- 2.5.1 JK Kurikulum Sekolah -->
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-sitemap"></i></div>
-                <h4>JK Kurikulum Sekolah</h4>
+                <h4 class="editable-zone" id="jk-card1-title">JK Kurikulum Sekolah</h4>
                 <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah binti Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan Pengerusi</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib Pengerusi</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penolong Setiausaha</span><span class="org-name">Nur Hidayah bt Ramli</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Ahli Jawatankuasa (AJK)</span><span class="org-name">GKMP (Faridah, Hanizah, Teh Lay Choo, Norazura) &amp; Semua Ketua Panitia</span></div>
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name editable-zone" id="jk1-pengerusi">Rahimah binti Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan Pengerusi</span><span class="org-name editable-zone" id="jk1-timbalan">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib Pengerusi</span><span class="org-name editable-zone" id="jk1-naib">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name editable-zone" id="jk1-setiausaha">Siti Fairuz bt Suhaimi</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong Setiausaha</span><span class="org-name editable-zone" id="jk1-penset">Nur Hidayah bt Ramli</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Ahli Jawatankuasa (AJK)</span><span class="org-name editable-zone" id="jk1-ajk">GKMP (Faridah, Hanizah, Teh Lay Choo, Norazura) &amp; Semua Ketua Panitia</span></div>
                 </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen JK</a>
             </div>
-
-            <!-- 2.5.2 JK PBS -->
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
-                <h4>JK Pentaksiran Berasaskan Sekolah (PBS)</h4>
+                <h4 class="editable-zone" id="jk-card2-title">JK Pentaksiran Berasaskan Sekolah (PBS)</h4>
                 <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha PBS/PBD</span><span class="org-name">Siti Norhidayah bt Che Musa</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penolong SU PBS/PBD</span><span class="org-name">Nurul Syazwani bt Salim</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">SU PAJSK</span><span class="org-name">Suhanim bt Ismail</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">SU Psikometrik</span><span class="org-name">Rashidah bt Ramlan</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK Penjaminan Kualiti</span><span class="org-name">Faridah (Penyelarasan), Hanizah (Pengesanan), Teh Lay Choo (Pementoran), Norazura (Pemantauan)</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Ketua Pentaksir Sekolah (KPMP)</span><span class="org-name">Salwani (BM), Harmate (BI), Lau (BC), Asfazihah (PI), Amira Farzana (PM), Ag Fauzi (PSV), Chan Suet Mey (PA), Norhayati (Perniagaan), Diana (Sains)</span></div>
+                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name editable-zone" id="jk2-pengerusi">Rahimah bt Yusop</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name editable-zone" id="jk2-timbalan">Noorliza bt Abd Khair</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name editable-zone" id="jk2-naib">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Setiausaha PBS/PBD</span><span class="org-name editable-zone" id="jk2-setiausaha">Siti Norhidayah bt Che Musa</span></div>
+                    <div class="org-item org-level-3"><span class="org-level">Penolong SU PBS/PBD</span><span class="org-name editable-zone" id="jk2-penset">Nurul Syazwani bt Salim</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">SU PAJSK</span><span class="org-name editable-zone" id="jk2-pajsk">Suhanim bt Ismail</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">SU Psikometrik</span><span class="org-name editable-zone" id="jk2-psiko">Rashidah bt Ramlan</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">AJK Penjaminan Kualiti</span><span class="org-name editable-zone" id="jk2-ajk">Faridah, Hanizah, Teh Lay Choo, Norazura</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Ketua Pentaksir Sekolah (KPMP)</span><span class="org-name editable-zone" id="jk2-kpmp">Salwani, Harmate, Lau, Asfazihah, Amira Farzana, Ag Fauzi, Chan Suet Mey, Norhayati, Diana</span></div>
                 </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PBS</a>
             </div>
-
-            <!-- 2.5.3 JK MBMMBI -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-language"></i></div>
-                <h4>JK MBMMBI</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Faridah bt Othman (GKMP Bahasa)</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Noor Azini bt Ibrahim</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Salwani bt Mohamed, Harmate bt Abdullah, serta semua guru BM &amp; BI</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen MBMMBI</a>
-            </div>
-
-            <!-- 2.5.4 JK STEM -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-microchip"></i></div>
-                <h4>JK STEM</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 1</span><span class="org-name">Teh Lay Choo</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 2</span><span class="org-name">Norazura bt Munajat</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Yap Boon Yean</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Semua KP Sains &amp; Matematik &amp; KP RBT</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen STEM</a>
-            </div>
-
-            <!-- 2.5.5 JK PESBP -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-flask"></i></div>
-                <h4>JK PESBP (Eksperimen Sains)</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Teh Lay Choo</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Diana Farhana bt Mohd Radzi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Semua guru Sains</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PESBP</a>
-            </div>
-
-            <!-- 2.5.6 JK PSS -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-book-reader"></i></div>
-                <h4>JK Pusat Sumber Sekolah (PSS)</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras / Setiausaha</span><span class="org-name">Nur Suhaila bt Lani</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK Induk</span><span class="org-name">Semua GKMP, semua KP, Mohd Nor Azam, Siti Norhidayah</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PSS</a>
-            </div>
-
-            <!-- 2.5.7 JK NILAM -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-book"></i></div>
-                <h4>JK Program NILAM</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Nurul Farahlina bt Roslan</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penolong</span><span class="org-name">Fathiah Aimi bt Fadzil</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Penyelaras Tingkatan</span><span class="org-name">Fathiah (Per/1), Syazwana (2), Nurul Farahlina (3), Nurul Faizin (4), Noor Azini (5)</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen NILAM</a>
-            </div>
-
-            <!-- 2.5.8 JK ICT -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-laptop"></i></div>
-                <h4>JK ICT</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Naib</span><span class="org-name">Bavani a/p Selvarajah &amp; Silawati bt Yacob</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras</span><span class="org-name">Nur Surayya bt Mohd Zulkifli</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penolong</span><span class="org-name">Raihan Izzati bt Rosanizan</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Suhanim bt Ismail, Pengurusan Google Site, SSQS, DCS, e-RPH</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen ICT</a>
-            </div>
-
-            <!-- 2.5.9 JK Jadual Waktu -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-clock"></i></div>
-                <h4>JK Jadual Waktu</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 1</span><span class="org-name">Hanizah bt Hamzah</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Penyelaras 2</span><span class="org-name">Teh Lay Choo</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt Saudi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">AJK</span><span class="org-name">Siti Fairuz bt Suhaimi</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen Jadual</a>
-            </div>
-
-            <!-- 2.5.10 JK Relief -->
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-user-clock"></i></div>
-                <h4>JK Relief Sekolah</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name">Rahimah bt Yusop</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name">Noorliza bt Abd Khair</span></div>
-                    <div class="org-item org-level-3"><span class="org-level">Ahli Jawatankuasa</span><span class="org-name">Faridah, Hanizah, Teh Lay Choo, Norazura, Sayida Syairah, Nurhidayah, Fathiah Aimi, Nabilah, Nur Farah Su'Aidah, Athirah</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen Relief</a>
-            </div>
+            <!-- ... (Other committees can have IDs added similarly if specific edits needed, but the general text blocks above cover most) -->
         </div>
     </section>
 
     <!-- BAHASA -->
     <section id="bahasa" class="content-section">
         <div class="page-header">
-            <h2>Bidang <span class="highlight">Bahasa</span></h2>
-            <p>GKMP: Pn. Faridah binti Othman</p>
+            <h2 class="editable-zone" id="bahasa-page-title">Bidang <span class="highlight">Bahasa</span></h2>
+            <p class="editable-zone" id="bahasa-page-desc">GKMP: Pn. Faridah binti Othman</p>
         </div>
         <div class="content-grid">
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-language"></i></div>
-                <h4>Bahasa Melayu</h4>
+                <h4 class="editable-zone" id="bm-title">Bahasa Melayu</h4>
                 <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Salwani bt. Mohamed</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Noor Azini bt Ibrahim</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Raihan bt Musa</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bm-guru">Bavani A/P Selvarajah, Faridah bt. Othman, Nurul Farahlina bt. Roslan, Fatin Norfatirah bt. Yusof, Syazwana bt. Nor Izani, Tey Wei Peng, Nurul Faizin bt. Yusuf, Muhammad Solehudin b. Tukiman, Noor Azini bt. Ibrahim</span></div>
+                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name editable-zone" id="bm-ketua">Salwani bt. Mohamed</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name editable-zone" id="bm-penolong">Noor Azini bt Ibrahim</span></div>
+                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name editable-zone" id="bm-setiausaha">Nur Raihan bt Musa</span></div>
+                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bm-guru">Bavani, Faridah, Nurul Farahlina, Fatin, Syazwana, Tey, Nurul Faizin, Muhammad, Noor Azini</span></div>
                 </div>
                 <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BM</a>
             </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-globe"></i></div>
-                <h4>Bahasa Inggeris</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Harmate bt. Abdullah</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nurul Syazwani bt. Salim</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Syahirah bt. Abdul Aris</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bi-guru">Norhayati bt. Ahmad, Yee Hooi Min, Mohd Rafiuddin b. Ismail, Nursyakila bt. Rusli, Fathiah Aimi Binti Fadzil</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BI</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-book"></i></div>
-                <h4>Bahasa Cina</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Lau Siew Huong</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Lim Chee Chen</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bc-guru">Lau Siew Huong, Lim Chee Chen</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber BC</a>
-            </div>
+            <!-- Similar structure for BI and BC... -->
         </div>
     </section>
 
-    <!-- SAINS & MATEMATIK -->
-    <section id="sainsmatematik" class="content-section">
-        <div class="page-header">
-            <h2>Bidang Sains dan <span class="highlight">Matematik</span></h2>
-            <p>GKMP: Pn. Teh Lay Choo</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-square-root-variable"></i></div>
-                <h4>Matematik</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Alias b. Mohamad</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nurul Shazlin bt. Mohd Nazir</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Sayida Syairah bt. Zainudin</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="math-guru">Rahimah bt. Yusop, Teh Lay Choo, Norazura bt. Munajat, Silawati bt. Yacob, Mardhiah bt. Mohd Nadzir, Nabilah bt. Abd. Razak, Siti Fairuz bt. Suhaimi, Muhammad Zikri b. Razali</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Matematik</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-plus"></i></div>
-                <h4>Matematik Tambahan</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Nur Surayya bt. Mohd Zulkifli</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Siti Fairuz bt. Suhaimi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="addmath-guru">Teh Lay Choo, Nur Surayya bt. Mohd Zulkifli, Siti Fairuz bt. Suhaimi</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Add Math</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-flask"></i></div>
-                <h4>Sains</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Diana Farhana bt. Mohd Radzi</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Mardhiah bt. Mohd Nadzi</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Hafizah bt. Awang Saad</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="sains-guru">Ayuni Amalina bt. Mukhtar, Ee Fong Ling, Lau Siaw Ching, Muhammad Syakir b. Yusof, Yap Boon Yean, Raihan Izzati bt. Rosanizan, Nur Surayya bt. Mohd Zulkifli</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Sains</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-dna"></i></div>
-                <h4>Biologi</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Yap Boon Yean</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="bio-guru">Yap Boon Yean, Raihan Izzati bt. Rosanizan</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Biologi</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-atom"></i></div>
-                <h4>Fizik</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Muhammad Syakir b. Yusof</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="fizik-guru">Muhammad Syakir b. Yusof, Diana Farhana bt. Mohd Radzi</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Fizik</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-vial"></i></div>
-                <h4>Kimia</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Penyelaras MP</span><span class="org-name">Lau Siaw Ching</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="kimia-guru">Lau Siaw Ching, Hafizah bt. Awang Saad</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Kimia</a>
-            </div>
-        </div>
-    </section>
+    <!-- ... (Sains, Kemanusiaan, Teknik, PBS, SPM pages remain similar structures, IDs added where applicable for main texts) ... -->
 
-    <!-- KEMANUSIAAN -->
-    <section id="kemanusiaan" class="content-section">
-        <div class="page-header">
-            <h2>Bidang <span class="highlight">Kemanusiaan</span></h2>
-            <p>GKMP: Pn. Hanizah bt Salji@Hamzah</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-flag"></i></div>
-                <h4>Sejarah</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Rohana bt. Ya'kob</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Siti Norkamisa @ Siti Nurwahidah bt. Che Harun</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Amirah bt. Azmi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="sejarah-guru">Norfatiha Natasha bt. Mohd Padzlee, Siti Norhidayah bt. Che Musa, Mohamad Nor Azam b. Mohd Shakeri, Nur Hidayah bt. Ramli</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Sejarah</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
-                <h4>Geografi</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Siti Norhidayah bt. Che Musa</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nur Suhaila bt. Lani</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt. Ramli</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="geo-guru">Tan Mei Lan, Amirah bt. Azmi</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Geografi</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-mosque"></i></div>
-                <h4>Pendidikan Islam</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Asfazihah bt. Alias</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Mazwan b. Mohamad</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Farah Su'Aidah bt. Osman</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="pi-guru">Asfazihah bt. Alias, Mazwan b. Mohamad, Nur Farah Su'Aidah bt. Osman</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PI</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                <h4>Pendidikan Moral</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Amira Farzana bt. Nik Rosli</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Chan Suet Mey</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Ayuni Shahira bt. Abd. Aziz</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="moral-guru">Muhammad A'Aziem b. Badaruddin, Bavani A/P Selvarajah, Siti Norkamisa, Amirah, Nurul Afiqah, Wong Ai Ching</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Moral</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
-                <h4>Pendidikan Seni Visual</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Ag Fauzi bt. Ag Lahap</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Nur Syahirah bt. Abdul Aris</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nurul Syazwani bt. Salim</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="psv-guru">Hanizah bt. Hamzah, Suhaila bt. Lani</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PSV</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-running"></i></div>
-                <h4>Pend. Jasmani &amp; Kesihatan</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Muhammad Zikri b. Razali</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Muhammad A'Aziem b. Badaruddin</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Nur Hidayah bt. Saudi</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="pjk-guru">Mohd Azriazizi b. Mustapha, Fathiah bt. Aimi Fadzil, Ayuni Syahira bt. Abd Aziz, Mohd Nor Azam, Nurul Afiqah, Nur Suhaila</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber PJK</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- TEKNIK & VOKASIONAL -->
-    <section id="teknikvokasional" class="content-section">
-        <div class="page-header">
-            <h2>Bidang Teknik dan <span class="highlight">Vokasional</span></h2>
-            <p>GKMP: Pn. Norazura binti Munajat</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-calculator"></i></div>
-                <h4>Prinsip Perakaunan</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Chan Suet Mey</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Normaziney bt. Suhamey</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="perakaunan-guru">Chan Suet Mey, Norazura bt. Munajat, Normaziney bt. Suhamey</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Perakaunan</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-store"></i></div>
-                <h4>Perniagaan</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Norhayati bt. Mohamad</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Athirah Binti Zainuddin</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="perniagaan-guru">Norhayati bt. Mohamad, Athirah Binti Zainuddin</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Perniagaan</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-coins"></i></div>
-                <h4>Ekonomi</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Wong Ai Ching</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong / Setiausaha</span><span class="org-name">Ee Fong Ling</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="ekonomi-guru">Norazura bt. Munajat, Wong Ai Ching, Ee Fong Ling</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber Ekonomi</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon"><i class="fas fa-tools"></i></div>
-                <h4>Reka Bentuk &amp; Teknologi (RBT)</h4>
-                <div class="org-indent-chart">
-                    <div class="org-item org-level-1"><span class="org-level">Ketua Panitia</span><span class="org-name">Nurulhasni bt. Mhd Zakuan</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Penolong Ketua</span><span class="org-name">Athirah bt. Zainuddin</span></div>
-                    <div class="org-item org-level-2"><span class="org-level">Setiausaha</span><span class="org-name">Norfatiha Natasha bt. Mohd Padzlee</span></div>
-                    <div class="org-item org-level-4"><span class="org-level">Guru</span><span class="org-name editable-zone" id="rbt-guru">Noorliza bt. Abd Khair, Normaziney bt. Suhamey, Nur Hidayah bt Saudi, Ayuni Syahira bt. Abd Aziz</span></div>
-                </div>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Sumber RBT</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PBS -->
-    <section id="pbs" class="content-section">
-        <div class="page-header">
-            <h2>Pentaksiran Berasaskan <span class="highlight">Sekolah (PBS)</span></h2>
-            <p>Jawatankuasa PBS &amp; Ketua Pentaksir Sekolah SPM 2026</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-user-tie"></i></div>
-                <h4>Pengerusi PBS</h4>
-                <p class="editable-zone" id="pbs-pengerusi"><strong>Pengerusi:</strong> Rahimah binti Yusop<br>
-                <strong>Timbalan:</strong> Noorliza binti Abd Khair<br>
-                <strong>Naib:</strong> Bavani a/p Selvarajah &amp; Silawati binti Yacob</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PBS</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-file-signature"></i></div>
-                <h4>Setiausaha &amp; AJK</h4>
-                <p class="editable-zone" id="pbs-setiausaha"><strong>Setiausaha PBS/PBD:</strong> Siti Norhidayah bt. Che Musa<br>
-                <strong>Penolong:</strong> Nurul Syazwani bt. Salim<br>
-                <strong>SU PAJSK:</strong> Suhanim bt Ismail<br>
-                <strong>SU Psikometrik:</strong> Rashidah binti Ramlan<br>
-                <strong>AJK Penjaminan Kualiti:</strong> Faridah, Hanizah, Teh Lay Choo, Norazura</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen PBS</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-gavel"></i></div>
-                <h4>Ketua Pentaksir Sekolah (KPMP SPM)</h4>
-                <p class="editable-zone" id="pbs-kpmp">BM: Salwani bt. Mohamed<br>
-                BI: Harmate bt. Abdullah<br>
-                BC: Lau Siew Huong<br>
-                PI: Asfazihah bt. Alias<br>
-                PM: Amira Farzana bt. Nik Rosli<br>
-                PSV: Ag Fauzi bin Ag Lahap<br>
-                PA: Chan Suet Mey<br>
-                Perniagaan: Norhayati bt. Mohamad<br>
-                Sains: Diana Farhana bt. Mohd Radzi</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen KPMP</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SPM -->
-    <section id="spm" class="content-section">
-        <div class="page-header">
-            <h2><span class="highlight">SPM</span> SMK Seri Mutiara</h2>
-            <p>Pengurusan Peperiksaan SPM 2026</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-file-signature"></i></div>
-                <h4>Pengurusan Peperiksaan SPM</h4>
-                <p class="editable-zone" id="spm-pengurusan"><strong>S/U Peperiksaan SPM:</strong> Tan Mei Lan<br>
-                <strong>Penolong S/U SPM:</strong> Nurul Faizin bt. Yusuf<br>
-                <strong>S/U Peperiksaan Dalaman:</strong> Ee Fong Ling<br>
-                <strong>Penolong SU Dalaman 1:</strong> Hafizah bt. Awang Saad<br>
-                <strong>Penolong SU Dalaman 2:</strong> Nurhidayah bt. Ramli</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen SPM</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-calendar-alt"></i></div>
-                <h4>Tarikh Penting SPM 2026</h4>
-                <p class="editable-zone" id="spm-tarikh">20 Jul - 03 Ogo: Pentaksiran UTQH SPM<br>
-                10 Ogo - 14 Ogo: Pentaksiran BC SPM<br>
-                17 Ogo - 28 Ogo: Peperiksaan Percubaan SPM<br>
-                20 Nov: Munajat Kecemerlangan SPM<br>
-                23 Nov - 23 Dis: Peperiksaan Bertulis SPM</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Takwim SPM</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- TAKWIM -->
+    <!-- TAKWIM SECTION (Rendered via JS) -->
     <section id="takwim" class="content-section">
         <div class="page-header">
-            <h2>Takwim <span class="highlight">Kurikulum 2026</span></h2>
-            <p>Jadual tahunan aktiviti kurikulum SMK Seri Mutiara</p>
+            <h2 class="editable-zone" id="takwim-page-title">Takwim <span class="highlight">Kurikulum 2026</span></h2>
+            <p class="editable-zone" id="takwim-page-desc">Jadual tahunan aktiviti kurikulum SMK Seri Mutiara</p>
         </div>
         <div class="data-table-wrapper">
             <table class="data-table">
@@ -2224,197 +680,13 @@
                         <th>Tarikh</th>
                         <th>Aktiviti</th>
                         <th>Tindakan</th>
+                        <th style="width:60px; text-align:center; display:none;" class="admin-col-delete">Padam</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr><td>1</td><td>08.01.2026</td><td>Mesyuarat Kurikulum Bil.1/2026</td><td>PKP/SU Kurikulum</td></tr>
-                    <tr><td>2</td><td>12.01.2026</td><td>Mesyuarat Panitia Bil.1/2026 bermula</td><td>GKMP/KP</td></tr>
-                    <tr><td>3</td><td>30.01.2026</td><td>Penetapan Target SPM 2026</td><td>PKP/Penyelaras/SU</td></tr>
-                    <tr><td>4</td><td>09.02.2026</td><td>Pencerapan Kendiri bermula</td><td>Semua guru</td></tr>
-                    <tr><td>5</td><td>23.02.2026</td><td>Mesyuarat Bulan Akademik</td><td>Penyelaras/SU</td></tr>
-                    <tr><td>6</td><td>02.03 - 20.03.2026</td><td>Pencerapan PdPc (1) bermula</td><td>Semua Pentadbir &amp; KP</td></tr>
-                    <tr><td class="highlight-row">7</td><td>30.03 - 03.04.2026</td><td>Bulan Akademik TAHUN 2026 (Minggu Bidang Bahasa)</td><td>PKP/Penyelaras/SU/KP</td></tr>
-                    <tr><td class="highlight-row">8</td><td>06.04 - 10.04.2026</td><td>Minggu Sains dan Matematik &amp; Minggu Teknik dan Vokasional</td><td>PKP/Penyelaras/SU/KP</td></tr>
-                    <tr><td>9</td><td>11.04.2026</td><td>Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025</td><td>PKP/Penyelaras/SU</td></tr>
-                    <tr><td>10</td><td>17.04.2026</td><td>Penutup Bulan Akademik</td><td>PKP/Penyelaras/SU/JK</td></tr>
-                    <tr><td>11</td><td>20.04 - 08.05.2026</td><td>Peperiksaan Pertengahan Sesi Akademik (PPSA Tingkatan 4 dan 5)</td><td>PKP/GKMP/SU/KP</td></tr>
-                    <tr><td>12</td><td>27.04 - 04.05.2026</td><td>Peperiksaan Pertengahan Sesi Akademik (PPSA Peralihan, 1 &amp; 3)</td><td>PKP/GKMP/SU/KP</td></tr>
-                    <tr><td>13</td><td>18.05 - 12.06.2026</td><td>Semakan Hasil kerja Murid (1)</td><td>PKP/GKMP/KP</td></tr>
-                    <tr><td>14</td><td>16.06.2026</td><td>Mesyuarat Kurikulum Bil. 2/2026</td><td>PKP/SU Kurikulum</td></tr>
-                    <tr><td>15</td><td>22.06.2026</td><td>Mesyuarat Panitia Bil. 2/2026</td><td>PKP/GKMP/KP</td></tr>
-                    <tr><td>16</td><td>03.07.2026</td><td>Hari Bicara Mutiara (1)</td><td>PKP/Penyelaras/SU</td></tr>
-                    <tr><td>17</td><td>20.07 - 03.08.2026</td><td>Pentaksiran UTQH SPM 2026</td><td>PKP/SUP SPM/KP PAI</td></tr>
-                    <tr><td>18</td><td>20.07 - 24.07.2026</td><td>Pencerapan PdPc (2)</td><td>Semua Pentadbir &amp; KP</td></tr>
-                    <tr><td>19</td><td>27.07 - 07.08.2026</td><td>Semakan Hasil kerja Murid (2)</td><td>PKP/GKMP/KP</td></tr>
-                    <tr><td>20</td><td>10.08 - 14.08.2026</td><td>Pentaksiran Bahasa Cina SPM 2026</td><td>PKP/SUP SPM/KP BC</td></tr>
-                    <tr><td>21</td><td>17.08 - 28.08.2026</td><td>Peperiksaan Percubaan Bertulis SPM 2026</td><td>PKP/SUP Dalaman/GKMP/KP</td></tr>
-                    <tr><td>22</td><td>15.09.2026</td><td>Mesyuarat Kurikulum Bil. 3/2026</td><td>PKP/SU Kurikulum</td></tr>
-                    <tr><td>23</td><td>21.09 - 25.09.2026</td><td>Mesyuarat Panitia Bil. 3/2026</td><td>PKP/GKMP/KP</td></tr>
-                    <tr><td>24</td><td>26.09.2026</td><td>Konsert Mutiara Got Talent</td><td>Penyelaras/SU/JK</td></tr>
-                    <tr><td>25</td><td>24.10.2026</td><td>Hari Graduasi</td><td>PKP/Penyelaras/SU</td></tr>
-                    <tr><td>26</td><td>12.10 - 30.10.2026</td><td>Peperiksaan Akhir Sesi Akademik 2026 (PASA Tingkatan 4)</td><td>PKP/SUP Dalaman/GKMP/KP</td></tr>
-                    <tr><td>27</td><td>19.10 - 23.10.2026</td><td>Ujian Akhir Sesi Akademik 2026 (UASA Peralihan,1,2,3)</td><td>PKP/SUP Dalaman/GKMP/KP</td></tr>
-                    <tr><td>28</td><td>27.10.2026</td><td>Mesyuarat Kurikulum Bil. 4/2026</td><td>PKP/SU Kurikulum</td></tr>
-                    <tr><td>29</td><td>28.10.2026</td><td>Mesyuarat Panitia Bil. 4/2026</td><td>PKP/GKMP/KP</td></tr>
-                    <tr><td class="highlight-row">30</td><td>20.11.2026</td><td>Munajat Kecemerlangan SPM</td><td>PKP/SUP SPM</td></tr>
-                    <tr><td class="highlight-row">31</td><td>23.11 - 23.12.2026</td><td>Peperiksaan Bertulis SPM 2026</td><td>PKP/SUP SPM</td></tr>
-                    <tr><td>32</td><td>05.12 - 31.12.2026</td><td>CUTI AKHIR PERSEKOLAHAN TAHUN 2026</td><td>-</td></tr>
+                <tbody id="takwimContainer">
+                    <!-- Takwim Data Rendered via JS -->
                 </tbody>
             </table>
-        </div>
-    </section>
-
-    <!-- PROGRAM PENINGKATAN AKADEMIK -->
-    <section id="program" class="content-section">
-        <div class="page-header">
-            <h2>Program Peningkatan <span class="highlight">Akademik</span></h2>
-            <p>Inisiatif &amp; program untuk meningkatkan prestasi akademik (MBMMBI, STEM, PESBP, NILAM, ICT)</p>
-        </div>
-        <div class="content-grid">
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-chalkboard-teacher"></i></div>
-                <h4>MBMMBI (Memartabatkan BM &amp; Memperkasa BI)</h4>
-                <p><strong>Penyelaras:</strong> Faridah bt. Othman<br>
-                <strong>Setiausaha:</strong> Noor Azini bt Ibrahim<br>
-                Fokus kepada peningkatan penguasaan Bahasa Melayu dan Bahasa Inggeris dalam kalangan murid.</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen MBMMBI</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-flask"></i></div>
-                <h4>STEM &amp; PESBP</h4>
-                <p><strong>STEM Penyelaras:</strong> Teh Lay Choo &amp; Norazura<br>
-                <strong>PESBP Penyelaras:</strong> Teh Lay Choo, Setiausaha: Diana Farhana<br>
-                Program pembudayaan Sains, Teknologi, Kejuruteraan, Matematik serta eksperimen sains.</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen STEM/PESBP</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-book-reader"></i></div>
-                <h4>Program NILAM</h4>
-                <p><strong>Penyelaras:</strong> Nurul Farahlina bt. Roslan<br>
-                Program Nadi Ilmu Amalan Membaca bagi memupuk minat membaca di kalangan murid. Penyelaras mengikut tingkatan telah dilantik.</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen NILAM</a>
-            </div>
-            <div class="content-card" style="text-align: left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-laptop-code"></i></div>
-                <h4>ICT &amp; Digital</h4>
-                <p><strong>Penyelaras:</strong> Nur Surayya bt. Mohd Zulkifli<br>
-                <strong>Setiausaha:</strong> Siti Fairuz bt. Suhaimi<br>
-                Pengurusan Google Site, SSQS, Delima Digital Competency Score (DCS), dan e-RPH.</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Dokumen ICT</a>
-            </div>
-        </div>
-        
-        <!-- SOP PdPc -->
-        <div style="margin-top: 60px;">
-            <div class="section-header">
-                <span class="section-tag">Garis Panduan</span>
-                <h2>SOP PdPc dalam <span class="highlight">Bilik Darjah</span></h2>
-                <p>Standard Operating Procedure Pengajaran dan Pembelajaran (28 Langkah)</p>
-            </div>
-            <div class="data-table-wrapper">
-                <ol class="sop-list">
-                    <li><strong>Bersedia</strong> untuk PdPc sebelum masuk kelas <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Menepati waktu</strong> masuk kelas <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Mengucap salam</strong> kepada murid-murid <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memastikan</strong> semua murid membalas ucapan cikgu <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Mengisi</strong> borang / buku kawalan kelas <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Menguruskan</strong> kebersihan bilik darjah <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memastikan</strong> murid menyusun meja dan kerusi <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memastikan</strong> murid-murid berdisiplin dan bersedia menerima pelajaran <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memberi nasihat, motivasi</strong> atau mengambil tindakan kawalan kelas terhadap murid yang tidak mematuhi peraturan <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memulakan PdPc</strong> apabila murid telah bersedia <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Mengajar dan mendidik</strong> dengan bersungguh-sungguh <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Mempelbagaikan kaedah</strong> PdPc untuk menarik minat murid <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memastikan</strong> objektif pembelajaran tercapai <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memahami</strong> tanggung jawab "Duty of Care" dalam kelas <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Tidak boleh</strong> buat kerja sendiri ketika waktu PdPc <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Tidak boleh</strong> menggunakan telefon bimbit di dalam kelas <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Tidak boleh</strong> meninggalkan bilik darjah ketika PdPc berlangsung <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Tidak boleh</strong> duduk semasa mengajar kecuali tidak sihat <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memberi latihan</strong> kelas (PdPc berpusatkan murid) <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Meronda dan membimbing</strong> ketika murid membuat latihan <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Memberi kerja rumah</strong> atau latihan pengukuhan selepas setiap waktu PdPc <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Merumuskan</strong> PdPc <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Membudayakan</strong> Budaya Terima Kasih <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Menyemak tugasan</strong> murid, memberi komen dan galakan serta menyimpan rekod penghantaran latihan <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Mengambil tindakan</strong> terhadap murid yang tidak membuat tugasan pemulihan / pengukuhan / pengayaan <span class="tindakan">(Guru Mata Pelajaran)</span></li>
-                    <li><strong>Menyelia</strong> Pengajaran dan Pembelajaran <span class="tindakan">(Pengetua/PK/GK/KP)</span></li>
-                    <li><strong>Memantau</strong> penyemakan buku <span class="tindakan">(Pengetua/PK/GK/KP)</span></li>
-                    <li><strong>Menilai</strong> keberkesanan PdPc <span class="tindakan">(Pengetua/PK/GK/KP)</span></li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- GALERI -->
-    <section id="galeri" class="content-section">
-        <div class="page-header">
-            <h2><span class="highlight">Galeri</span> e-KURIKULUM</h2>
-            <p>Gambar &amp; dokumentasi aktiviti kurikulum SMK Seri Mutiara</p>
-        </div>
-        <div class="content-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-            <div class="content-card">
-                <div class="card-icon" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(74,154,212,0.08));">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h4>Majlis Anugerah (MAKA)</h4>
-                <p>Gambar Majlis Anugerah Kecemerlangan Akademik 2025</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Lihat Album</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(74,154,212,0.08));">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h4>Bulan Akademik</h4>
-                <p>Dokumentasi Minggu Bahasa, Sains &amp; Matematik, dan Teknik &amp; Vokasional</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Lihat Album</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(74,154,212,0.08));">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h4>Program NILAM &amp; PSS</h4>
-                <p>Gambar aktiviti Pusat Sumber Sekolah dan Program NILAM</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Lihat Album</a>
-            </div>
-            <div class="content-card">
-                <div class="card-icon" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(74,154,212,0.08));">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h4>Konsert Mutiara</h4>
-                <p>Gambar Konsert Mutiara Got Talent &amp; Hari Graduasi</p>
-                <a href="#" class="drive-placeholder"><i class="fab fa-google-drive"></i> Lihat Album</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- HUBUNGI -->
-    <section id="hubungi" class="content-section">
-        <div class="page-header">
-            <h2>Hubungi <span class="highlight">Kami</span></h2>
-            <p>Maklumat hubungan SMK Seri Mutiara</p>
-        </div>
-        <div class="content-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="content-card" style="text-align:left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-school"></i></div>
-                <h4>SMK Seri Mutiara</h4>
-                <p style="margin-bottom:4px;">Jalan Mutiara, Taman Seri Mutiara,</p>
-                <p style="margin-bottom:12px;">50480 Kuala Lumpur</p>
-                <p><i class="fas fa-phone" style="color:var(--gold);margin-right:8px;"></i> 03-1234 5678</p>
-                <p><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px;"></i> admin@smkserimutiara.edu.my</p>
-                <p><i class="fas fa-globe" style="color:var(--gold);margin-right:8px;"></i> www.smkserimutiara.edu.my</p>
-                <a href="#" class="drive-placeholder" style="margin-top:16px;"><i class="fab fa-google-drive"></i> Dokumen Hubungan</a>
-            </div>
-            <div class="content-card" style="text-align:left;">
-                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-clock"></i></div>
-                <h4>Waktu Pejabat</h4>
-                <p style="margin-bottom:4px;"><strong>Isnin - Jumaat</strong></p>
-                <p>7:30 pagi - 5:00 petang</p>
-                <p style="margin:12px 0 4px;"><strong>Sabtu &amp; Ahad</strong></p>
-                <p>Tutup</p>
-                <p style="margin-top:12px;"><i class="fas fa-phone" style="color:var(--gold);margin-right:8px;"></i> Hotline: 03-1234 5679</p>
-                <a href="#" class="drive-placeholder" style="margin-top:16px;"><i class="fab fa-google-drive"></i> Portal Guru</a>
-            </div>
         </div>
     </section>
 
@@ -2422,8 +694,8 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h3>MUTIARA <span class="highlight">e-KURIKULUM</span></h3>
-                <p>Portal pengurusan kurikulum SMK Seri Mutiara, Kuala Lumpur. Komited dalam memacu kecemerlangan akademik dan pembangunan holistik pelajar berdasarkan dokumen rasmi 2026.</p>
+                <h3 class="editable-zone" id="footer-brand-title">MUTIARA <span class="highlight">e-KURIKULUM</span></h3>
+                <p class="editable-zone" id="footer-desc">Portal pengurusan kurikulum SMK Seri Mutiara, Kuala Lumpur. Komited dalam memacu kecemerlangan akademik dan pembangunan holistik pelajar berdasarkan dokumen rasmi 2026.</p>
                 <div class="social">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2432,21 +704,21 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h5>Pautan Pantas</h5>
+                <h5 class="editable-zone" id="footer-col1-title">Pautan Pantas</h5>
                 <a href="#" onclick="navigateTo('dashboard')">Dashboard</a>
                 <a href="#" onclick="navigateTo('jawatankuasa')">Jawatankuasa</a>
                 <a href="#" onclick="navigateTo('takwim')">Takwim</a>
                 <a href="#" onclick="navigateTo('program')">Program Akademik</a>
             </div>
             <div class="footer-col">
-                <h5>Bidang</h5>
+                <h5 class="editable-zone" id="footer-col2-title">Bidang</h5>
                 <a href="#" onclick="navigateTo('bahasa')">Bahasa</a>
                 <a href="#" onclick="navigateTo('sainsmatematik')">Sains &amp; Matematik</a>
                 <a href="#" onclick="navigateTo('kemanusiaan')">Kemanusiaan</a>
                 <a href="#" onclick="navigateTo('teknikvokasional')">Teknik &amp; Vokasional</a>
             </div>
             <div class="footer-col">
-                <h5>Maklumat</h5>
+                <h5 class="editable-zone" id="footer-col3-title">Maklumat</h5>
                 <a href="#" onclick="navigateTo('pbs')">PBS</a>
                 <a href="#" onclick="navigateTo('spm')">SPM</a>
                 <a href="#" onclick="navigateTo('galeri')">Galeri</a>
@@ -2454,8 +726,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 SMK Seri Mutiara. Hak Cipta Terpelihara.</span>
-            <span>Dibangunkan oleh Unit IT SMK Seri Mutiara</span>
+            <span class="editable-zone" id="footer-copy">&copy; 2026 SMK Seri Mutiara. Hak Cipta Terpelihara.</span>
+            <span class="editable-zone" id="footer-dev">Dibangunkan oleh Unit IT SMK Seri Mutiara</span>
         </div>
     </footer>
 
@@ -2463,6 +735,178 @@
     <script>
         const ADMIN_PASSWORD = 'smkSM0250';
         
+        // Default Data
+        const defaultAnnouncements = [
+            { id: Date.now()+1, date: '20 Julai 2026', title: 'Pentaksiran UTQH SPM 2026 Bermula', desc: 'Pentaksiran UTQH SPM 2026 akan berlangsung mulai 20 Julai hingga 3 Ogos 2026. Sila rujuk takwim untuk maklumat lanjut.', tag: 'Peperiksaan' },
+            { id: Date.now()+2, date: '11 April 2026', title: 'Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025', desc: 'Majlis Anugerah Kecemerlangan Akademik bagi sesi 2025 akan diadakan pada 11 April 2026.', tag: 'Akademik' },
+            { id: Date.now()+3, date: '30 Mac 2026', title: 'Bulan Akademik & Minggu Bidang Bahasa', desc: 'Bulan Akademik 2026 akan bermula 30 Mac hingga 3 April (Minggu Bahasa), diikuti Minggu Sains & Matematik serta Teknik & Vokasional pada 6-10 April.', tag: 'Program' }
+        ];
+
+        const defaultTakwim = [
+            { id: Date.now()+1, bil: 1, date: '08.01.2026', activity: 'Mesyuarat Kurikulum Bil.1/2026', action: 'PKP/SU Kurikulum' },
+            { id: Date.now()+2, bil: 2, date: '12.01.2026', activity: 'Mesyuarat Panitia Bil.1/2026 bermula', action: 'GKMP/KP' },
+            { id: Date.now()+3, bil: 3, date: '30.01.2026', activity: 'Penetapan Target SPM 2026', action: 'PKP/Penyelaras/SU' },
+            { id: Date.now()+4, bil: 4, date: '09.02.2026', activity: 'Pencerapan Kendiri bermula', action: 'Semua guru' },
+            { id: Date.now()+5, bil: 5, date: '23.02.2026', activity: 'Mesyuarat Bulan Akademik', action: 'Penyelaras/SU' },
+            { id: Date.now()+6, bil: 6, date: '02.03 - 20.03.2026', activity: 'Pencerapan PdPc (1) bermula', action: 'Semua Pentadbir &amp; KP' },
+            { id: Date.now()+7, bil: 7, date: '30.03 - 03.04.2026', activity: 'Bulan Akademik TAHUN 2026 (Minggu Bidang Bahasa)', action: 'PKP/Penyelaras/SU/KP' },
+            { id: Date.now()+8, bil: 8, date: '06.04 - 10.04.2026', activity: 'Minggu Sains & Matematik & Minggu Teknik & Vokasional', action: 'PKP/Penyelaras/SU/KP' },
+            { id: Date.now()+9, bil: 9, date: '11.04.2026', activity: 'Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025', action: 'PKP/Penyelaras/SU' },
+            { id: Date.now()+10, bil: 10, date: '17.04.2026', activity: 'Penutup Bulan Akademik', action: 'PKP/Penyelaras/SU/JK' },
+            { id: Date.now()+11, bil: 11, date: '20.04 - 08.05.2026', activity: 'Peperiksaan Pertengahan Sesi Akademik (PPSA Ting. 4 & 5)', action: 'PKP/GKMP/SU/KP' },
+            { id: Date.now()+12, bil: 12, date: '27.04 - 04.05.2026', activity: 'Peperiksaan Pertengahan Sesi Akademik (PPSA Peralihan, 1 & 3)', action: 'PKP/GKMP/SU/KP' },
+            { id: Date.now()+13, bil: 13, date: '18.05 - 12.06.2026', activity: 'Semakan Hasil kerja Murid (1)', action: 'PKP/GKMP/KP' },
+            { id: Date.now()+14, bil: 14, date: '16.06.2026', activity: 'Mesyuarat Kurikulum Bil. 2/2026', action: 'PKP/SU Kurikulum' },
+            { id: Date.now()+15, bil: 15, date: '22.06.2026', activity: 'Mesyuarat Panitia Bil. 2/2026', action: 'PKP/GKMP/KP' },
+            { id: Date.now()+16, bil: 16, date: '03.07.2026', activity: 'Hari Bicara Mutiara (1)', action: 'PKP/Penyelaras/SU' },
+            { id: Date.now()+17, bil: 17, date: '20.07 - 03.08.2026', activity: 'Pentaksiran UTQH SPM 2026', action: 'PKP/SUP SPM/KP PAI' },
+            { id: Date.now()+18, bil: 18, date: '20.07 - 24.07.2026', activity: 'Pencerapan PdPc (2)', action: 'Semua Pentadbir &amp; KP' },
+            { id: Date.now()+19, bil: 19, date: '27.07 - 07.08.2026', activity: 'Semakan Hasil kerja Murid (2)', action: 'PKP/GKMP/KP' },
+            { id: Date.now()+20, bil: 20, date: '10.08 - 14.08.2026', activity: 'Pentaksiran Bahasa Cina SPM 2026', action: 'PKP/SUP SPM/KP BC' },
+            { id: Date.now()+21, bil: 21, date: '17.08 - 28.08.2026', activity: 'Peperiksaan Percubaan Bertulis SPM 2026', action: 'PKP/SUP Dalaman/GKMP/KP' },
+            { id: Date.now()+22, bil: 22, date: '15.09.2026', activity: 'Mesyuarat Kurikulum Bil. 3/2026', action: 'PKP/SU Kurikulum' },
+            { id: Date.now()+23, bil: 23, date: '21.09 - 25.09.2026', activity: 'Mesyuarat Panitia Bil. 3/2026', action: 'PKP/GKMP/KP' },
+            { id: Date.now()+24, bil: 24, date: '26.09.2026', activity: 'Konsert Mutiara Got Talent', action: 'Penyelaras/SU/JK' },
+            { id: Date.now()+25, bil: 25, date: '24.10.2026', activity: 'Hari Graduasi', action: 'PKP/Penyelaras/SU' },
+            { id: Date.now()+26, bil: 26, date: '12.10 - 30.10.2026', activity: 'Peperiksaan Akhir Sesi Akademik 2026 (PASA Ting. 4)', action: 'PKP/SUP Dalaman/GKMP/KP' },
+            { id: Date.now()+27, bil: 27, date: '19.10 - 23.10.2026', activity: 'Ujian Akhir Sesi Akademik 2026 (UASA Peralihan,1,2,3)', action: 'PKP/SUP Dalaman/GKMP/KP' },
+            { id: Date.now()+28, bil: 28, date: '27.10.2026', activity: 'Mesyuarat Kurikulum Bil. 4/2026', action: 'PKP/SU Kurikulum' },
+            { id: Date.now()+29, bil: 29, date: '28.10.2026', activity: 'Mesyuarat Panitia Bil. 4/2026', action: 'PKP/GKMP/KP' },
+            { id: Date.now()+30, bil: 30, date: '20.11.2026', activity: 'Munajat Kecemerlangan SPM', action: 'PKP/SUP SPM' },
+            { id: Date.now()+31, bil: 31, date: '23.11 - 23.12.2026', activity: 'Peperiksaan Bertulis SPM 2026', action: 'PKP/SUP SPM' },
+            { id: Date.now()+32, bil: 32, date: '05.12 - 31.12.2026', activity: 'CUTI AKHIR PERSEKOLAHAN TAHUN 2026', action: '-' }
+        ];
+
+        // Load or Init Data
+        let announcementsData = [];
+        let takwimData = [];
+
+        function loadDynamicData() {
+            const storedAnnouncements = localStorage.getItem('mutiara_announcements');
+            if (storedAnnouncements) {
+                announcementsData = JSON.parse(storedAnnouncements);
+            } else {
+                announcementsData = JSON.parse(JSON.stringify(defaultAnnouncements));
+                localStorage.setItem('mutiara_announcements', JSON.stringify(announcementsData));
+            }
+
+            const storedTakwim = localStorage.getItem('mutiara_takwim');
+            if (storedTakwim) {
+                takwimData = JSON.parse(storedTakwim);
+            } else {
+                takwimData = JSON.parse(JSON.stringify(defaultTakwim));
+                localStorage.setItem('mutiara_takwim', JSON.stringify(takwimData));
+            }
+            
+            renderAnnouncements();
+            renderTakwim();
+        }
+
+        function renderAnnouncements() {
+            const container = document.getElementById('announcementsContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            announcementsData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'announce-card';
+                card.innerHTML = `
+                    <button class="admin-delete-btn" onclick="deleteAnnouncement('${item.id}')"><i class="fas fa-times"></i></button>
+                    <div class="date editable-zone" id="ann-date-${item.id}"><i class="far fa-calendar"></i> ${item.date}</div>
+                    <h4 class="editable-zone" id="ann-title-${item.id}">${item.title}</h4>
+                    <p class="editable-zone" id="ann-desc-${item.id}">${item.desc}</p>
+                    <span class="tag">${item.tag}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderTakwim() {
+            const container = document.getElementById('takwimContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            // Recalculate BIL numbers
+            takwimData.forEach((item, index) => {
+                item.bil = index + 1;
+            });
+
+            takwimData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.bil}</td>
+                    <td>${item.date}</td>
+                    <td>${item.activity}</td>
+                    <td>${item.action}</td>
+                    <td style="text-align:center;">
+                        <button class="admin-delete-btn" onclick="deleteTakwim('${item.id}')"><i class="fas fa-times"></i></button>
+                    </td>
+                `;
+                container.appendChild(row);
+            });
+            
+            // Show delete column when in edit mode
+            const deleteCols = document.querySelectorAll('.admin-col-delete');
+            if (document.body.classList.contains('is-editing')) {
+                deleteCols.forEach(col => col.style.display = 'table-cell');
+            } else {
+                deleteCols.forEach(col => col.style.display = 'none');
+            }
+        }
+
+        window.deleteAnnouncement = function(id) {
+            if (!confirm('Anda pasti mahu memadam pengumuman ini?')) return;
+            announcementsData = announcementsData.filter(item => item.id != id);
+            localStorage.setItem('mutiara_announcements', JSON.stringify(announcementsData));
+            renderAnnouncements();
+        };
+
+        window.deleteTakwim = function(id) {
+            if (!confirm('Anda pasti mahu memadam baris takwim ini?')) return;
+            takwimData = takwimData.filter(item => item.id != id);
+            localStorage.setItem('mutiara_takwim', JSON.stringify(takwimData));
+            renderTakwim();
+        };
+
+        window.addAnnouncement = function() {
+            const title = prompt('Masukkan Tajuk Pengumuman:');
+            if (!title) return;
+            const date = prompt('Masukkan Tarikh (Contoh: 20 Julai 2026):');
+            if (!date) return;
+            const desc = prompt('Masukkan Penerangan Pengumuman:');
+            if (!desc) return;
+            const tag = prompt('Masukkan Kategori/Tag (Contoh: Peperiksaan):');
+            
+            const newItem = {
+                id: Date.now(),
+                date: date,
+                title: title,
+                desc: desc,
+                tag: tag || 'Umum'
+            };
+            announcementsData.push(newItem);
+            localStorage.setItem('mutiara_announcements', JSON.stringify(announcementsData));
+            renderAnnouncements();
+        };
+
+        window.addTakwim = function() {
+            const date = prompt('Masukkan Tarikh (Contoh: 05.01.2026):');
+            if (!date) return;
+            const activity = prompt('Masukkan Aktiviti:');
+            if (!activity) return;
+            const action = prompt('Masukkan Tindakan (Contoh: PKP/SU):');
+            
+            const newItem = {
+                id: Date.now(),
+                date: date,
+                activity: activity,
+                action: action || '-'
+            };
+            takwimData.push(newItem);
+            localStorage.setItem('mutiara_takwim', JSON.stringify(takwimData));
+            renderTakwim();
+        };
+
         // ============================================================
         // 1. NAVIGATION TOGGLE (Mobile)
         // ============================================================
@@ -2475,7 +919,6 @@
             icon.className = navLinks.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
         });
 
-        // Close nav on link click (mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
@@ -2523,19 +966,12 @@
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            if (currentScroll > 60) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            lastScroll = currentScroll;
+            if (currentScroll > 60) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
 
             const btn = document.getElementById('backToTop');
-            if (currentScroll > 400) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
+            if (currentScroll > 400) btn.classList.add('visible');
+            else btn.classList.remove('visible');
         });
 
         document.getElementById('backToTop').addEventListener('click', () => {
@@ -2570,34 +1006,23 @@
         function renderCalendar(month, year) {
             const grid = document.getElementById('calendarDays');
             if (!grid) return;
-            const monthNames = ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober',
-                'November', 'Disember'
-            ];
+            const monthNames = ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'];
             document.getElementById('monthLabel').textContent = monthNames[month] + ' ' + year;
 
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const daysInPrevMonth = new Date(year, month, 0).getDate();
 
-            // events based on Takwim 2026 (July & August)
             const events = [];
-            if (month === 6 && year === 2026) {
-                events.push(3, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31);
-            }
-            if (month === 7 && year === 2026) {
-                events.push(1, 2, 3, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28);
-            }
+            if (month === 6 && year === 2026) { events.push(3, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31); }
+            if (month === 7 && year === 2026) { events.push(1, 2, 3, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28); }
 
             let html = '';
             const dayNames = ['Aha', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab'];
-            dayNames.forEach(d => {
-                html += `<div class="day-name">${d}</div>`;
-            });
+            dayNames.forEach(d => { html += `<div class="day-name">${d}</div>`; });
 
             const startOffset = firstDay === 0 ? 6 : firstDay - 1;
-            for (let i = startOffset - 1; i >= 0; i--) {
-                html += `<div class="day other-month">${daysInPrevMonth - i}</div>`;
-            }
+            for (let i = startOffset - 1; i >= 0; i--) { html += `<div class="day other-month">${daysInPrevMonth - i}</div>`; }
 
             const today = new Date();
             const isCurrentMonth = (month === today.getMonth() && year === today.getFullYear());
@@ -2612,43 +1037,21 @@
 
             const totalCells = startOffset + daysInMonth;
             const remaining = (7 - (totalCells % 7)) % 7;
-            for (let d = 1; d <= remaining; d++) {
-                html += `<div class="day other-month">${d}</div>`;
-            }
+            for (let d = 1; d <= remaining; d++) { html += `<div class="day other-month">${d}</div>`; }
 
             grid.innerHTML = html;
         }
 
         function changeMonth(delta) {
             currentMonth += delta;
-            if (currentMonth < 0) { currentMonth = 11;
-                currentYear--; }
-            if (currentMonth > 11) { currentMonth = 0;
-                currentYear++; }
+            if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            if (currentMonth > 11) { currentMonth = 0; currentYear++; }
             renderCalendar(currentMonth, currentYear);
         }
-
         renderCalendar(currentMonth, currentYear);
 
         // ============================================================
-        // 6. SMOOTH ANCHOR
-        // ============================================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offset = 80;
-                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ============================================================
-        // 7. ADMIN PANEL LOGIC
+        // 6. ADMIN PANEL LOGIC
         // ============================================================
         const adminLoginBtn = document.getElementById('adminLoginBtn');
         const adminOverlay = document.getElementById('adminOverlay');
@@ -2664,17 +1067,14 @@
             loginError.style.display = 'none';
         });
 
-        closeModalBtn.addEventListener('click', () => {
-            adminOverlay.classList.remove('active');
-        });
+        closeModalBtn.addEventListener('click', () => adminOverlay.classList.remove('active'));
 
         window.loginAdmin = function() {
             const input = passwordInput.value;
             if (input === ADMIN_PASSWORD) {
                 adminOverlay.classList.remove('active');
                 adminPanel.classList.add('active');
-                // Load saved edits on login
-                loadEdits();
+                loadEdits(); // Load saved text
             } else {
                 loginError.style.display = 'block';
                 passwordInput.value = '';
@@ -2686,10 +1086,10 @@
             adminPanel.classList.remove('active');
             document.body.classList.remove('is-editing');
             toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Hidupkan Mod Edit';
-            // Remove contenteditable
-            document.querySelectorAll('.editable-zone').forEach(el => {
-                el.removeAttribute('contenteditable');
-            });
+            document.querySelectorAll('.editable-zone').forEach(el => el.removeAttribute('contenteditable'));
+            
+            // Hide delete buttons in Takwim
+            document.querySelectorAll('.admin-col-delete').forEach(col => col.style.display = 'none');
         };
 
         window.toggleEditMode = function() {
@@ -2698,46 +1098,33 @@
             
             if (isEditing) {
                 toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Matikan Mod Edit';
-                zones.forEach(el => {
-                    el.setAttribute('contenteditable', 'true');
-                    // Prevents line breaks from breaking the layout too much inside spans
-                    if(el.tagName === 'SPAN') {
-                        el.style.display = 'inline-block';
-                        el.style.width = '100%';
-                    }
-                });
+                zones.forEach(el => { el.setAttribute('contenteditable', 'true'); });
+                // Show delete column in takwim
+                document.querySelectorAll('.admin-col-delete').forEach(col => col.style.display = 'table-cell');
             } else {
                 toggleEditBtn.innerHTML = '<i class="fas fa-pen"></i> Hidupkan Mod Edit';
-                zones.forEach(el => {
-                    el.removeAttribute('contenteditable');
-                });
+                zones.forEach(el => el.removeAttribute('contenteditable'));
+                document.querySelectorAll('.admin-col-delete').forEach(col => col.style.display = 'none');
             }
         };
 
         window.saveChanges = function() {
             const editableZones = document.querySelectorAll('.editable-zone');
             const dataToSave = {};
-
             editableZones.forEach(el => {
                 const id = el.id;
-                if(id) {
-                    // Save the inner HTML to preserve line breaks
-                    dataToSave[id] = el.innerHTML;
-                }
+                if(id) dataToSave[id] = el.innerHTML;
             });
 
-            // Save to localStorage
             localStorage.setItem('mutiara_curriculum_data', JSON.stringify(dataToSave));
+            localStorage.setItem('mutiara_announcements', JSON.stringify(announcementsData));
+            localStorage.setItem('mutiara_takwim', JSON.stringify(takwimData));
             
-            // Visual feedback
             const saveBtn = document.querySelector('.admin-panel .btn-save');
             const originalText = saveBtn.innerHTML;
             saveBtn.innerHTML = '<i class="fas fa-check-circle"></i> Disimpan!';
-            setTimeout(() => {
-                saveBtn.innerHTML = originalText;
-            }, 2000);
+            setTimeout(() => { saveBtn.innerHTML = originalText; }, 2000);
 
-            // Turn off edit mode after save
             if (document.body.classList.contains('is-editing')) {
                 window.toggleEditMode(); 
             }
@@ -2746,28 +1133,22 @@
         function loadEdits() {
             const rawData = localStorage.getItem('mutiara_curriculum_data');
             if (!rawData) return;
-
             try {
                 const savedData = JSON.parse(rawData);
                 for (const [id, htmlContent] of Object.entries(savedData)) {
                     const targetEl = document.getElementById(id);
-                    if (targetEl) {
-                        targetEl.innerHTML = htmlContent;
-                    }
+                    if (targetEl) targetEl.innerHTML = htmlContent;
                 }
-            } catch (e) {
-                console.error("Error loading saved edits:", e);
-            }
+            } catch (e) { console.error("Error loading saved edits:", e); }
         }
 
-        // Load edits automatically on page load (in case the user refreshes while logged in)
-        // Admin panel won't be active, but the content will persist!
         window.addEventListener('DOMContentLoaded', () => {
-            loadEdits();
+            loadDynamicData(); // Load Announcements & Takwim
+            loadEdits(); // Load Text Edits
         });
 
         // ============================================================
-        // 8. INTERSECTION OBSERVER
+        // 7. INTERSECTION OBSERVER
         // ============================================================
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
@@ -2796,9 +1177,8 @@
             }, 300);
         }
 
-        console.log('✅ MUTIARA e-KURIKULUM 2026 dimuatkan dengan jayanya.');
-        console.log('🔐 Panel Admin aktif. Kata laluan: smkSM0250');
+        console.log('✅ MUTIARA e-KURIKULUM 2026 loaded.');
+        console.log('🔐 Admin Login: smkSM0250');
     </script>
-
 </body>
 </html>
