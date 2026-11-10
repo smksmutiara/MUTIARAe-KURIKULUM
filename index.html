@@ -297,72 +297,16 @@
         .section-header h2 .highlight { color: var(--gold); }
         .section-header p { color: var(--text-muted); max-width: 560px; margin: 12px auto 0; font-size: 1rem; }
 
-        /* ===== KEPIMPINAN SEKOLAH (BAHAGIAN BARU) ===== */
-        .leadership-section {
-            padding: 60px 2rem 40px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .leader-grid {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-        .leader-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 32px 24px 28px;
-            text-align: center;
-            width: 340px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(201, 168, 76, 0.08);
-            position: relative;
-        }
-        .leader-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 48px rgba(15, 43, 79, 0.12);
-            border-color: rgba(201, 168, 76, 0.20);
-        }
-        .leader-card .leader-img-wrapper {
-            width: 240px;
-            height: 240px;
-            margin: 0 auto 20px;
-            position: relative;
-            border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--gold), var(--accent-blue));
-            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25);
-        }
-        .leader-card .leader-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--white);
-            background: #e8ecf2;
-        }
-        .leader-card .leader-role {
-            display: block;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .leader-card .leader-name {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            line-height: 1.3;
-        }
-        @media (max-width: 768px) {
-            .leader-grid { gap: 30px; }
-            .leader-card { width: 280px; padding: 24px 18px; }
-            .leader-card .leader-img-wrapper { width: 180px; height: 180px; }
-        }
+        /* ===== KEPIMPINAN SEKOLAH ===== */
+        .leadership-section { padding: 60px 2rem 40px; max-width: 1280px; margin: 0 auto; }
+        .leader-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+        .leader-card { background: var(--white); border-radius: 24px; padding: 32px 24px 28px; text-align: center; width: 340px; box-shadow: var(--card-shadow); transition: var(--transition); border: 1px solid rgba(201, 168, 76, 0.08); position: relative; }
+        .leader-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(15, 43, 79, 0.12); border-color: rgba(201, 168, 76, 0.20); }
+        .leader-card .leader-img-wrapper { width: 240px; height: 240px; margin: 0 auto 20px; position: relative; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, var(--gold), var(--accent-blue)); box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25); }
+        .leader-card .leader-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); background: #e8ecf2; }
+        .leader-card .leader-role { display: block; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+        .leader-card .leader-name { font-size: 1.35rem; font-weight: 700; color: var(--primary-blue); line-height: 1.3; }
+        @media (max-width: 768px) { .leader-grid { gap: 30px; } .leader-card { width: 280px; padding: 24px 18px; } .leader-card .leader-img-wrapper { width: 180px; height: 180px; } }
 
         /* ===== QUICK ACCESS CARDS ===== */
         .quick-access { padding: 60px 2rem 80px; max-width: 1280px; margin: 0 auto; }
@@ -590,7 +534,6 @@
             <a href="#" data-section="sainsmatematik"><i class="fas fa-flask"></i> Sains &amp; Matematik</a>
             <a href="#" data-section="kemanusiaan"><i class="fas fa-landmark"></i> Kemanusiaan</a>
             <a href="#" data-section="teknikvokasional"><i class="fas fa-tools"></i> Teknik &amp; Vokasional</a>
-            <a href="#" data-section="pbs"><i class="fas fa-clipboard-check"></i> PBS</a>
             <a href="#" data-section="Peperiksaan"><i class="fas fa-graduation-cap"></i> Peperiksaan</a>
             <a href="#" data-section="takwim"><i class="fas fa-calendar-alt"></i> Takwim</a>
             <a href="#" data-section="program"><i class="fas fa-rocket"></i> Program Akademik</a>
@@ -699,11 +642,6 @@
                     <h4 class="editable-zone" id="qa-teknik-title">Teknik &amp; Vokasional</h4>
                     <p class="editable-zone" id="qa-teknik-desc">RBT, Ekonomi, Prinsip Perakaunan &amp; Perniagaan </p>
                 </div>
-                <div class="qa-card" onclick="navigateTo('pbs')">
-                    <div class="icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4 class="editable-zone" id="qa-pbs-title">PBS</h4>
-                    <p class="editable-zone" id="qa-pbs-desc">Pentaksiran Berasaskan Sekolah</p>
-                </div>
                 <div class="qa-card" onclick="navigateTo('Peperiksaan')">
                     <div class="icon"><i class="fas fa-graduation-cap"></i></div>
                     <h4 class="editable-zone" id="qa-Peperiksaan-title">Peperiksaan</h4>
@@ -780,7 +718,7 @@
             </div>
             <div class="content-card">
                 <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
-                <h4 class="editable-zone" id="jk-card2-title">JK Pentaksiran Berasaskan Sekolah (PBS)</h4>
+                <h4 class="editable-zone" id="jk-card2-title">JK Pentaksiran Berasaskan Sekolah</h4>
                 <div class="org-indent-chart">
                     <div class="org-item org-level-1"><span class="org-level">Pengerusi</span><span class="org-name editable-zone" id="jk2-pengerusi">Rahimah bt Yusop</span></div>
                     <div class="org-item org-level-2"><span class="org-level">Timbalan</span><span class="org-name editable-zone" id="jk2-timbalan">Noorliza bt Abd Khair</span></div>
@@ -1239,7 +1177,6 @@
             </div>
             <div class="footer-col">
                 <h5 class="editable-zone" id="footer-col3-title">Maklumat</h5>
-                <a href="#" onclick="navigateTo('pbs')">PBS</a>
                 <a href="#" onclick="navigateTo('Peperiksaan')">Peperiksaan</a>
                 <a href="#" onclick="navigateTo('galeri')">Galeri</a>
             </div>
