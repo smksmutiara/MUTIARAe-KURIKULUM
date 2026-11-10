@@ -537,6 +537,7 @@
             <a href="#" data-section="Peperiksaan"><i class="fas fa-graduation-cap"></i> Peperiksaan</a>
             <a href="#" data-section="takwim"><i class="fas fa-calendar-alt"></i> Takwim</a>
             <a href="#" data-section="program"><i class="fas fa-rocket"></i> Program Akademik</a>
+            <a href="#" data-section="program-peningkatan"><i class="fas fa-chart-line"></i> Program Peningkatan</a>
             <a href="#" data-section="galeri"><i class="fas fa-images"></i> Galeri</a>
         </div>
     </nav>
@@ -651,6 +652,11 @@
                     <div class="icon"><i class="fas fa-calendar-alt"></i></div>
                     <h4 class="editable-zone" id="qa-takwim-title">Takwim Kurikulum</h4>
                     <p class="editable-zone" id="qa-takwim-desc">Jadual 2026</p>
+                </div>
+                <div class="qa-card" onclick="navigateTo('program-peningkatan')">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h4 class="editable-zone" id="qa-prog-peningkatan-title">Program Peningkatan</h4>
+                    <p class="editable-zone" id="qa-prog-peningkatan-desc">Model Intervensi &amp; OPR</p>
                 </div>
             </div>
         </section>
@@ -1136,6 +1142,56 @@
         </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- PROGRAM PENINGKATAN AKADEMIK (SECTION BARU - GOOGLE SLIDES) -->
+    <!-- ============================================================ -->
+    <section id="program-peningkatan" class="content-section">
+        <div class="page-header">
+            <h2>Program Peningkatan <span class="highlight">Akademik</span></h2>
+            <p>Model Intervensi SPM &amp; OPR Program Peningkatan Akademik SMK Seri Mutiara</p>
+        </div>
+
+        <div class="content-grid" style="grid-template-columns: 1fr;">
+
+            <!-- KAD 1: MODEL INTERVENSI SPM -->
+<div class="content-card" style="text-align: left;">
+    <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-bullseye"></i></div>
+    <h4 class="editable-zone" id="prog-kad1-title">Model Intervensi SPM</h4>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">
+        Model intervensi bersepadu bagi meningkatkan pencapaian SPM 2026.
+    </p>
+    <div style="position: relative; width: 100%; padding-bottom: 59.4%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+        <iframe src="https://docs.google.com/presentation/d/GANTI_ID_SLAID_MODEL_INTERVENSI/embed?start=false&loop=false&delayms=3000"
+                frameborder="0"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+                allowfullscreen="true"
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true">
+        </iframe>
+    </div>
+</div>
+
+            <!-- KAD 2: OPR PROGRAM PENINGKATAN AKADEMIK -->
+            <div class="content-card" style="text-align: left;">
+                <div class="card-icon" style="margin:0 0 16px 0;"><i class="fas fa-clipboard-list"></i></div>
+                <h4 class="editable-zone" id="prog-kad2-title">OPR Program Peningkatan Akademik</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">
+                    Objektif, Program &amp; Rancangan (OPR) bagi Program Peningkatan Akademik 2026.
+                </p>
+                <div style="position: relative; width: 100%; padding-bottom: 59.4%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                    <iframe src="https://docs.google.com/presentation/d/GANTI_ID_SLAID_OPR/embed?start=false&loop=false&delayms=3000"
+                            frameborder="0"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+                            allowfullscreen="true"
+                            mozallowfullscreen="true"
+                            webkitallowfullscreen="true">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- GALERI (Dynamic with Admin Upload & Modern Slideshow) -->
     <section id="galeri" class="content-section">
         <div class="page-header">
@@ -1167,6 +1223,7 @@
                 <a href="#" onclick="navigateTo('jawatankuasa')">Jawatankuasa</a>
                 <a href="#" onclick="navigateTo('takwim')">Takwim</a>
                 <a href="#" onclick="navigateTo('program')">Program Akademik</a>
+                <a href="#" onclick="navigateTo('program-peningkatan')">Program Peningkatan</a>
             </div>
             <div class="footer-col">
                 <h5 class="editable-zone" id="footer-col2-title">Bidang</h5>
