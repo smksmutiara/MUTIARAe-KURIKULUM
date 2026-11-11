@@ -1250,10 +1250,31 @@
         const ADMIN_PASSWORD = 'smkSM0250';
         
         const defaultAnnouncements = [
-            { id: Date.now()+1, date: '20 Julai 2026', title: 'Pentaksiran UTQH SPM 2026 Bermula', desc: 'Pentaksiran UTQH SPM 2026 akan berlangsung mulai 20 Julai hingga 3 Ogos 2026. Sila rujuk takwim untuk maklumat lanjut.', tag: 'Peperiksaan' },
-            { id: Date.now()+2, date: '11 April 2026', title: 'Majlis Anugerah Kecemerlangan Akademik (MAKA) 2025', desc: 'Majlis Anugerah Kecemerlangan Akademik bagi sesi 2025 akan diadakan pada 11 April 2026.', tag: 'Akademik' },
-            { id: Date.now()+3, date: '30 Mac 2026', title: 'Bulan Akademik & Minggu Bidang Bahasa', desc: 'Bulan Akademik 2026 akan bermula 30 Mac hingga 3 April (Minggu Bahasa), diikuti Minggu Sains & Matematik serta Teknik & Vokasional pada 6-10 April.', tag: 'Program' }
-        ];
+    { 
+        id: Date.now()+1, 
+        date: '11 November 2026', 
+        title: 'UAS SPM 2026', 
+        desc: `
+            <p style="margin-bottom:12px; text-align:justify;">
+                Sila lihat poster di bawah untuk maklumat lanjut.
+            </p>
+            <a href="images/IMG_20261111_215907_396.jpg" target="_blank" rel="noopener" style="display:block;">
+                <img src="images/IMG_20261111_215907_396.jpg" 
+                     alt="UAS SPM 2026" 
+                     style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:block; cursor:zoom-in; transition:transform 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.02)'"
+                     onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <p style="text-align:center; font-style:italic; color:#5a6a7a; margin-top:10px; font-size:0.85rem;">
+                <i class="fas fa-search-plus" style="margin-right:6px;"></i>
+                Klik poster untuk lihat saiz penuh
+            </p>
+        `, 
+        tag: 'Peperiksaan' 
+    },
+    { id: Date.now()+2, date: '11 November 2026', title: 'e-Fail Panitia', desc: 'Mohon Semua Ketua Panitia dapat melengkapkan e-Fail Panitia untuk tahun 2026 di google drive selewat-lewatnya 22 November 2026. Semakan akan mula dibuat oleh GK mengikut Bidang bermula 2 November 2026.', tag: 'Pengurusan Panitia' },
+    { id: Date.now()+3, date: '11 November 2026', title: 'Pengisian Markah PAT 2026', desc: ' Pengisian markah PAT bagi mestilah dibuat selewat-lewatnya 18/11/26.', tag: 'Peperiksaan' }
+];
 
         const defaultTakwim = [
             { id: Date.now()+1, bil: 1, date: '08.01.2026', activity: 'Mesyuarat Kurikulum Bil.1/2026', action: 'PKP/SU Kurikulum' },
